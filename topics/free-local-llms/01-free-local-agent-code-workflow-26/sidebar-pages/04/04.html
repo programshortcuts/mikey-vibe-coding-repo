@@ -1,0 +1,118 @@
+<!-- 04.html -->
+<div id="targetDivInjected">
+    <header class="header-codeColor-lesson">
+        <h3>4. <code class="m">this</code> in the class constructor function <code class="b">Person</code></h3>
+    </header>
+    <div class="main-container-codeColor">
+        <div class="steps-container">
+            <!-- 01 -->
+            <div tabindex="0" class="step-float">
+                <div class="step-img ">
+                    <img src="parts/04/images/01.png" alt="">
+                </div>
+                <div  class="step-txt txt70">
+                    <h4>01</h4>
+                    <p>
+                        Using the <code class="m">this</code> keyword in the <code>constructor</code> function or class, <code class="b">Person</code>,
+                        will allow us to add the method as a properties/attributes to the <strong class="lsg">'instance'</strong> of <code class="b">Person</code> <span class="lsg">me</span>
+
+                    </p>
+                    <div class="code-container">
+                        <pre tabindex="0" class="copy-code">
+function Person(){
+<span class="m">this</span>.talk = function(){
+    return 'Talking'
+}
+}
+const <span class="lsg">me</span> = new Person()
+<span class="lsg">me</span></pre>
+                    </div>
+                    <p>
+                        The <span class="m">this</span> keeps the <code class="y">talk</code> method in the instance and 
+                        not in it's <code><span class="b">Person</span></code> prototype
+                    </p>  
+                </div>
+            </div>
+            <!-- 02 -->
+            <div tabindex="0" class="step-float ">
+                        <div class="step-txt">
+                            <h4>02</h4>
+                            <p>
+                                The <code>talk()</code> method is now stored as an attribute to the instance <code class="lsg">me</code>
+                                of parent class/funciton <code class="b">Person</code>.
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="0" class="copy-code">
+me.<span class="y">__proto__</span></pre>
+                            </div>
+                            <div class="code-container">
+                                <pre tabindex="0" class="copy-code">
+Person.<span class="y">prototype</span></pre>
+                            </div>
+                            <div class="code-container">
+                                <pre tabindex="0" class="copy-code">
+<span class="b">Person</span></pre>
+                            </div>
+                            
+                            
+                            <p>
+                                The method is not longer stored in <code class="y">prototype</code> or <code class="y">__proto</code>
+                            </p>
+                        </div>
+                        <div class="imgs-container">
+                            <div class="img-container">
+                                <div class="step-img">
+                                    <img src="parts/04/images/02.png" alt="">
+                                </div>
+                            </div>
+                            <div class="img-container">
+                                <div class="step-img">
+                                    <img src="parts/04/images/02b.png" alt="">
+                                </div>
+                            </div>
+    
+                        </div>
+                        
+            </div>
+            <!-- 03 -->
+            <div tabindex="0" class="step-float">
+                <div class="step-img ">
+                    <!-- <img src="parts/04/images/03.png" alt=""> -->
+                    <img src="parts/04/images/03.png" alt="">
+                </div>
+                <div class="step-txt txt70">
+                    <h4>03</h4>
+                    <p>
+                        We don't use <code class="m">this</code> frequently b/c it
+                        will copy the function into each instance of the class, is not needed
+                    </p> 
+                    <p>
+                        Here, we see that when using <code class="m">this</code> in the 'Prototype' class <code class="b">Person</code>
+                        if will appear as undefined when logged, that is b/c as we have said this whole page...
+                    </p>
+                    <div class="code-container">
+                        <pre tabindex="0" class="copy-code">
+function <span class="b">Person</span>(){
+<span class="m">this</span>.age = 12
+}
+const me = new Person()
+me.age</pre>
+                    </div>
+                    <div class="code-container">
+                        <pre tabindex="0" class="copy-code">
+Person.age</pre>
+                    </div>
+                    
+                    
+                    <p>
+                        The <code class="m">this</code> atrribute, <code class="y">age</code> and its value get applied to the <strong>'instance'</strong> of the class and not 
+                        to the class itself
+                    </p>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    <button tabindex="0" id="endNxtLesson">next lesson</button>
+</div>

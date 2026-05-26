@@ -1,0 +1,27 @@
+.box{
+    padding-left: 2%;
+}
+.side-bar h3 {
+    margin-bottom: 5%;
+    margin-top: 15%;
+    /* margin-top: 20%; */
+}
+.side-bar-links {
+    margin-top: 10%;
+    padding-left: 4% ;
+    margin-left: 15%;
+}
+.side-bar-links > li {
+    margin-bottom: 10%;
+}
+.side-bar-links > li >ul,
+.side-bar-links > li >ol{
+    margin-left: 15%;
+}
+.side-bar-links>li>ul > li,
+.side-bar-links>li>ol > li {
+    margin: 10% 0;
+}
+.main-container{
+    padding-bottom: 7.5%;
+}

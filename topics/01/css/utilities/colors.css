@@ -1,0 +1,23 @@
+:root{
+    /* --bkgrnd: rgb(115, 108, 108); */
+    --bcolor: rgb(115, 108, 108);
+}
+body{
+    background-color: whitesmoke;
+}
+
+.nav-bar-lesson-title{
+    background-color: var(--bcolor);
+    
+}
+.side-bar .drop-down,
+.page-header a,
+.side-bar ul>li>a {
+    color: black !important;
+}
+.page-header a:visited{
+    color: black !important;
+}
+.copy-code {
+    background-color: whitesmoke;
+}

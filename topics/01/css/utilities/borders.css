@@ -1,0 +1,27 @@
+:root{
+    --font-clr: rgba(19, 106, 211, 0.679);
+    --border-clr: rgba(19, 106, 211, 0.679);
+}
+.page-header.grid {
+}
+.box {
+    border-right:  3px solid var(--border-clr);
+    border-bottom: 3px solid var(--border-clr);
+}
+.box.tutorialLink-darkModeBtn-container {
+    border: none !important;
+}
+nav#navBarLessonTitle{
+    border-bottom: 1px solid black;
+}
+aside.side-bar{
+    border-right: 1px solid black;
+
+}
+.lesson-btns-container > button{
+    border-radius: 8px;
+
+}
+.step-float {
+    border: 2px solid whitesmoke
+}

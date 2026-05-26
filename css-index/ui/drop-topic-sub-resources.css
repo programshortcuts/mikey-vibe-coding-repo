@@ -1,0 +1,103 @@
+* {
+    margin:0; 
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.topic-container {
+    display: flex;
+    flex-direction: column;
+    margin: 2% 0 ;
+}
+.topic-container  > .drop-topic {
+    padding: .5% 0 ;
+    padding-left: 2%;
+    border: 1px solid black;
+    display: flex;
+}
+.resource {
+    border: 1px solid black;
+}
+.sub-topics-container > .drop-topic{
+    border: none;
+    background-color: blue;
+}
+.topic-container > .sub-topics-container,
+.topic-container ul.sub-resources-container
+ {
+    margin-top: 1%;
+    margin-left: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    display: flex;    
+    align-items: stretch;
+    list-style: none;
+    text-decoration: none;
+    gap: 1%;
+}
+ul.sub-resources-container > li{
+    /* margin-top: 1%; */
+    display: inline;
+    list-style: none;
+    flex-direction: column;
+}
+a.resource{
+    display: flex;
+    display: inline-flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+}
+a.resource:visited{
+    color: blue;
+}
+.drop-topic:active,.drop-topic:focus{
+    box-shadow: 2px 0 4px 3px blue;
+
+}
+.resource:active,.resource:focus{
+    box-shadow: 2px 2px 8px 6px lightseagreen;
+}
+
+.animate{
+    position: relative;
+    box-shadow: 0 0 3px 3px orange;
+    z-index: 1;
+    transform: scale(1.3);
+    transform: all 1000ms;
+}
+.hide {
+    display: none !important;
+}
+.show {
+    display: inline-block;
+}
+
+.topic-container>.drop-topic>img {
+    max-height: 50px;
+    margin-left: 2.5%;
+}
+.resource>img {    
+    /* margin-top: 1%; */
+    margin-left: 1.26%;
+    max-height: 50px;
+}
+@media screen and (max-width:720px){
+    .topic-container>.sub-topics-container,
+    .topic-container ul.sub-resources-container {
+        margin-top: 4%;
+    }
+
+}
+@media screen and (max-width:672px){
+    
+    .topic-container>.sub-topics-container,
+    .topic-container ul.sub-resources-container {
+        margin: 2.5% 0;
+        padding-top: 2%;
+    }
+    .resource>img {
+        max-width: 50px;
+    }
+}

@@ -1,0 +1,57 @@
+<!-- 05.html -->
+<div id="targetDivInjected">
+    <header class="header-codeColor-lesson">
+        <h3>5. Add properties to this <br>
+        add methods to <code class="y">prototype</code> of parent</h3>
+    </header>
+    <div class="main-container-codeColor">
+        <div class="steps-container">
+            <!-- 01 -->
+            <div tabindex="0" class="step-float ">
+                <div class="step-txt">
+                    <h4>01</h4>
+                    <p>
+                        convention is add properties to <code class="m">this</code>
+                        and <code class="b">methods</code> to the parent class.<code class="y">prototype</code>
+                    </p>
+                    <div class="code-container">
+                        <pre tabindex="0" class="copy-code">
+function Person(age,name,gender){
+<span class="m">this</span>.age = age
+<span class="m">this</span>.name = name
+<span class="m">this</span>.gender = gender
+}
+Person.<span class="y">prototype</span>.run = function (){return 'Running'}
+Person.prototype.talk = ()=>{return 'Talking'}
+Person.prototype.walk = () => {return 'Walking'}
+const me = new Person()
+me
+</pre>
+                    </div>
+                    <div class="code-container">
+                        <pre tabindex="0" class="copy-code">
+me.__prototype__</pre>
+                    </div>
+                    
+                    
+                    
+                </div>
+                <div class="imgs-container">
+                    <div class="img-container">
+                        <div class="step-img">
+                            <img src="parts/05/images/01.png" alt="">
+                        </div>
+                    </div>
+                    <div class="img-container">
+                        <div class="step-img">
+                            <img src="parts/05/images/01b.png" alt="">
+                        </div>
+                    </div>
+            
+                </div>
+            
+            </div>
+        </div>
+    </div>
+    <button tabindex="0" id="endNxtLesson">next lesson</button>
+</div>

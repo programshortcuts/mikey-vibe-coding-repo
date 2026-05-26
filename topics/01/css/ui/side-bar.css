@@ -1,0 +1,39 @@
+:root {
+    --sidebar-width: 120px;
+    --main-content-width: calc(100% - var(--sidebar-width));
+    --sidebar-collapsed-width: 2.5%;
+}
+.side-bar a.topic{
+    text-decoration: none;    
+}
+.side-bar h3{
+    border-bottom: 1px solid blue;
+    width: 50%;
+    
+}
+.side-bar {
+    width: var(--sidebar-width);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    /* sticks below header if header has height */
+    flex-shrink: 0;
+    /* overflow: hidden; */
+    /* height: calc(100vh - var(--header-height, 80px)); */
+}
+#sideBarBtn {
+    position: absolute;
+    top: 0px;
+    /* always stays above bottom edge */
+    left: 5px;
+    /* always at left edge */
+    z-index: 9999;
+    pointer-events: auto;
+    /* make sure it's above other stuff */
+}
+.side-bar ul {
+    list-style: decimal;
+}
+.side-bar ul>li>a {
+    text-decoration: none;
+}

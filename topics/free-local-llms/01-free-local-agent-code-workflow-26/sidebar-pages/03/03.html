@@ -1,0 +1,251 @@
+<!-- 03.html -->
+<div id="targetDivInjected">
+    <header class="header-colorCode-lesson">
+        <h3 id="lessonTitle">Inheritance</h3>
+    </header>
+    <div class="main-container-colorCode">
+        <div class="steps-container">
+
+            <!-- 01-->
+            <div   tabindex="0" class="step-float"data-video="https://www.youtube.com/watch?v=jnME98ckDbQ"
+                            data-timestamp="60">
+                <div class="step-img xs">
+                    <!-- <img loading="lazy" src="images/01.png" alt=""> -->
+                    <img loading="lazy" src="side-bar-links-pages/01/images/01.png" alt="">
+                </div>
+                <h4>01-b(temp)(is og)</h4>
+                <p>
+                    <strong>"Inheritance"</strong> can be used with <code class="lsg">Objecs</code> and <code class="b">classes</code>
+                </p>
+                <div  class="step-txt">
+                    <p>
+                        This shows inefficent code creating duplicate code for each instance of each object created
+                    </p>
+                    <div class="code-container ">
+                        <pre tabindex="0" class="copy-code ">
+const <span class="lsg">me</span> = <span class="lsg">{</span>
+talk(){
+    return 'Talking'
+}
+<span class="lsg">}</span>
+const <span class="lsg">you</span> = <span class="lsg">{</span>
+talk(){
+    return 'Talking'
+}
+<span class="lsg">}</span></pre>
+                    </div>
+                    <div class="code-container ">
+                        <pre tabindex="0" class="copy-code ">
+<span class="lsg">me</span>.talk()
+<span class="lsg">you</span>.talk()</pre>
+                    </div>              
+                </div>
+            </div>
+            <!-- 02 -->
+            <div tabindex="0" class="step-float" data-video="https://www.youtube.com/watch?v=jnME98ckDbQ" 
+            data-timestamp="120">
+                <div class="step-img">
+                    <!-- <img loading="lazy" src="images/02.png" alt=""> -->
+                    <img loading="lazy" src="side-bar-links-pages/01/images/02.png" alt="">
+                </div>
+                <div class="step-txt">
+                    <h4>02</h4>
+                    <p>
+                        Instead of adding <code class="b">methods</code> to individual objects add the 
+                        <span class="b">method</span> to a class and create instances of that class.
+                    </p>
+                    <div class="code-container ">
+                            <pre class="copy-code">
+class <span class="b">Person</span> {
+<span class="b">talk()</span>{
+    return 'talking'
+}
+}
+const me = new Person()
+const you = new Person()</pre>
+                    </div>
+                    <div class="code-container">
+                        <pre tabindex="0" class="copy-code">
+me.<span class="b">talk()</span>
+you.<span class="b">talk()</span></pre>
+                    </div>
+                    
+                </div>
+                <div class="step-txt">
+                    <p>
+                        Now the method <strong>"inherits"</strong> from the <code class="b">talk()</code>
+                        method from the  <code class="b">Person</code>
+                        class
+                    </p>
+                </div>
+            </div>
+            <!-- 03 -->
+            <div tabindex="0" class="step-float" data-video="https://www.youtube.com/watch?v=jnME98ckDbQ" 
+            data-timestamp="180">
+                <div class="step-img">
+                    <img loading="lazy" src="side-bar-links-pages/01/images/03.png" alt="">
+                </div>
+                <div class="step-txt">
+                    <h4>03</h4>
+                    <p>
+                        We can re-assign a new method to the instance of the <code class="b">Person</code>
+                        class, and it will Not change the <code class="b">talk()</code> method within <code class="b">Person</code>
+                    </p>
+                </div>
+                <div class="step">
+                    <div class="step-txt">
+                        <div class="code-container ">
+                            <pre tabindex="0" class="copy-code ">
+class Person{
+talk(){
+    return 'Talking'
+}
+}
+const me = new Person()
+function newMethod(){
+return 'new Method'
+}
+me.talk = newMethod()
+me.talk
+</pre>
+                        </div>
+                        <div class="code-container">
+                            <pre tabindex="0" class="copy-code">
+Person</pre></div>
+
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- 04 -->
+            <div  tabindex="0" class="step-float br1" data-video="https://www.youtube.com/watch?v=jnME98ckDbQ"
+                data-timestamp="240">
+                <div class="step-img">
+                    <img loading="lazy" src="side-bar-links-pages/01/images/04.png" alt="">
+                </div>
+                <div class="step-txt">
+                    <h4>04</h4>
+                    <p>
+                        <span class="r">Remember</span> that including <code class="">()</code> after a function when assigning
+                        it to a variable will only asign the <strong>Return Value</strong>, if you do that you can not invoke the 
+                        method on the instance of the class because me.<span class="b">talk</span> will only have the 
+                        return value <code>'new Method'</code> from the <code>newMethod</code>  function.
+                        so invoking the <code><span class="b">talk</span><span class="r">()</span></code> method on 
+                        the <code class="b">me</code> instance with <code class="r">()</code> will throw an error
+                    </p>
+                </div>
+                <div class="step-txt auto">
+                    <div class="code-container ">
+                        <pre tabindex="0" class="copy-code ">
+class Person{
+talk(){
+return 'Talking'
+}
+}
+const me = new Person()
+function newMethod(){
+return 'new Method'
+}
+me.talk = newMethod
+me.talk()
+</pre>
+                    </div>
+                    <div class="code-container">
+                        <pre tabindex="0" class="copy-code">
+me.talk = newMethod()
+me.talk<span class="r">()</span><pre>
+                    </div>
+                    
+
+
+                </div>
+            </div>
+            <!-- 05 imgs-container -->
+            <div  tabindex="0" class="step-float br1">
+                <div class="step-txt">
+                    <h4>05</h4>
+                    <p>
+                        If you console the <code class="b">me</code> instance, we used to see that any method from the
+                        class would reside in <code class="r">__proto__</code>, but this is now depreciated, see next lesson to
+                        continue to
+                        and see in modern javascript using <code class="m">[[Prototype]]</code>
+                    </p>
+                    <p>
+            
+                    </p>
+                </div>
+                <div class="imgs-container">
+                    <div class="step-img">
+                        <img loading="lazy" src="side-bar-links-pages/01/images/05.png" alt="">
+                    </div>
+                    <div class="step-img">
+                        <img loading="lazy" src="side-bar-links-pages/01/images/05b.png" alt="">
+                    </div>
+                </div>
+                <!-- <div class="imgs-container">
+                    <div class="img-container">
+                        <div class="step-img">
+                            <img loading="lazy" src="side-bar-links-pages/01/images/05.png" alt="">
+                        </div>
+                    </div>
+                    <div class="img-container">
+                        <div class="step-img">
+                            <img loading="lazy" src="side-bar-links-pages/01/images/05b.png" alt="">
+                        </div>
+                    </div>
+                </div> -->
+                
+            </div>
+            <!-- 06 -->
+            <div tabindex="0" class="step-float ">
+                <div class="step-img">
+                    <img loading="lazy" src="side-bar-links-pages/01/images/06.png" alt="">
+                </div>
+                
+                <div class="step-txt">
+                    <h4>06</h4>
+                    <p>
+                        Notice, Methods are not in the instance itself, they are in
+                        the <code class="m">[[Protoype]]</code> of it's parent class <code class="b">Person</code>.
+                    </p>
+                    <div class="code-container ">
+                        <pre tabindex="0" class="copy-code ">
+class Person{
+<span class="b">talk()</span>{
+return 'Talking'
+}
+}
+const me = new Person()
+me
+                        </pre>
+                    </div>
+                </div>
+
+            </div>
+            <!-- 07 -->
+            <div tabindex="0" class="step-float ">
+                <div class="step-img">
+                    <img loading="lazy" src="side-bar-links-pages/01/images/07.png" alt="">
+                </div>
+                <div class="step-txt">
+                    <h4>07</h4>
+                    <p>
+                        But we can add attributes to the instance itself
+                    </p>
+                    <div class="code-container ">
+                        <pre tabindex="0" class="copy-code ">
+class Person{
+talk(){
+return 'Talking'
+}
+}
+const me = new Person()
+me.<span class="o">age</span> = 30
+me
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

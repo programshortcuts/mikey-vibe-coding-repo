@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index-sidebar-temp-v1</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <script type="module" src="js/core/main-script.js" defer></script>
+    <!-- <script src="js/keyboard-nav-temp.js" defer></script> -->
+    <script src="js/dark-mode.js" defer></script>
+    <script type="module" src="../../js-index/dropTopics-topic-resource.js" defer></script>
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' ;
+        style-src  'self' https://cdn.jsdelivr.net;
+        font-src 'self' https://unpkg.com data:;
+        img-src 'self' data:;
+        frame-src https://www.youtube.com;
+        object-src 'none';
+        base-uri 'none';
+            form-action 'self';
+    ">
+</head>
+<body class="">
+    <div class="page-wrapper">
+        <header class="page-header grid">
+            <div class="box back-link-container">
+                <a id="backLink" href="../../../index.html" class="nav-link">&larr; Back (ai)</a>
+            </div>
+            
+            <div class="box home-link-container">
+                <a id="homePageLink" href="https://programshortcuts.github.io/tyler-tomani-2026/" class="nav-link">Home (homepage)</a>
+            </div>
+            <div class="box codeCmdShortcuts-container">
+                <a id="codeComShortcutsLink" href="#" class="nav-link" target="_blank">
+                    code Cmd Shortcuts
+                </a>
+            </div>
+            <div class="box tutorialLink-darkModeBtn-container">
+                <a id="tutorialLink" target="_blank"  data-video="https://www.youtube.com/watch?v=UngVdAsQEiU"
+                     href="https://www.youtube.com/watch?v=UngVdAsQEiU">
+                    <img src="images/01-free-local-llms.jpeg" alt="">
+                </a>
+                <button tabindex="0" id="darkModeBtn">dark Mode</button>
+            </div>
+        </header>
+        <nav tabindex="0" id="navBarLessonTitle" class="nav-bar-lesson-title">
+            <h2 class="nav-lesson">The Best Local Agentic Coding Workflow (Complete Guide)
+</h2>
+        </nav>
+        <main class="main-container">
+            <aside tabindex="0" class="side-bar ">
+                <i  id="sideBarBtn" tabindex="0" class="bx bx-menu"></i>
+                <div class="side-bar-links-container">
+                    <!-- FOR now use #topicsTempId -->
+                    <a tabindex="0" id="topic" href="#" class="drop-down topic" >
+                        <h3>Topics</h3>
+                    </a>
+                    <ul class="side-bar-links drop-snips">
+                        <li><a tabindex="0" class="drop-down" data-video="https://www.youtube.com/watch?v=UngVdAsQEiU" 
+                                data-timestamp="338" 
+                                href="side-bar-links-html/01/01.html">setup</a>
+                            <ul class="drop-snips show">
+                                <li><a  href="side-bar-links-html//01/01-01/01-01.html" data-video="https://www.youtube.com/watch?v=UngVdAsQEiU"
+                                     data-timestamp="538" 
+                                    >1</a></li>  
+                                <li><a  href="side-bar-links-html//01/01-02/01-02.html" data-video="https://www.youtube.com/watch?v=UngVdAsQEiU"
+                                     data-timestamp="2202">
+                                    TBD 2</a></li>  
+                                <li><a href="side-bar-links-html/01/01-03/01-03.html">TBD 3</a></li>  
+                            </ul>
+                        </li>
+                        <li><a tabindex="0" class="drop-down" data-video="https://www.youtube.com/watch?v=UngVdAsQEiU" data-timestamp="824"
+                                href="side-bar-links-html/01/01.html">TBD</a>
+                            <ul class="drop-snips ">
+                                <li><a href="side-bar-links-html//01/01-01/01-01.html"
+                                        data-video="https://www.youtube.com/watch?v=UngVdAsQEiU" data-timestamp="932">TBd</a>
+                                </li>
+                                <li><a href="side-bar-links-html/01/01-02/01-02.html">TBD 2</a></li>
+                                <li><a href="side-bar-links-html/01/01-03/01-03.html">TBD 3</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <div class="main-content-container">
+                <div tabindex="0" id="mainTargetDiv" data-href="home-page.html">
+<!-- This is temporary, targetDiv resides in the 
+                     injected html page -->
+                </div>
+                <div class="lesson-btns-container">
+                    <button tabindex="0" id="endNxtBtn">next lesson (E)</button>
+                    <button tabindex="0" id="prevBtn">previous (P)</button>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

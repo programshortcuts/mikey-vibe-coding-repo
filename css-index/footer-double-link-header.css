@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.page-wrapper main#mainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 70vh;
+    margin: 0 2.5%;
+    padding: 0 2.5%;
+    padding-left: 0;
+    scrollbar-width: none;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.page-wrapper>footer.footer-header {
+    display: flex;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    justify-content: space-between;
+    padding: 0 2.5%;
+}
+
+.main-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-header .main-links>a {
+    font-size: 16px;
+    height: 40px;
+    padding: 10px 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    text-decoration: none;
+    white-space: nowrap;
+    text-wrap: nowrap;
+    border-radius: 5px;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+.page-title {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.page-title>img {
+    max-height: 50px;
+    max-width: 200px;
+}
+
+.page-title>h1 {
+    font-size: 80%;
+}
+
+.page-title>h1 img {
+    height: 50%;
+    width: 50%;
+}
+
+.page-wrapper>footer.footer-header>.page-logo>img {
+    height: 100%;
+    width: 100%;
+    max-height: 100px;
+}
+
+.page-logo img {
+    max-width: 100px;
+}
+
+.main-links a:active,
+.main-links a:focus {
+    box-shadow: 0px 2px 3px 3px lightseagreen;
+    color: black;
+
+}
+
+.styles-btns {
+
+    justify-self: flex-end;
+    align-self: flex-end;
+}
+
+@media screen and (max-width: 683px) {
+
+
+    .page-title {
+        display: flex;
+    }
+
+}
+
+@media screen and (max-width:672px) {
+    .page-wrapper {
+        max-height: 75vh;
+    }
+
+    .page-wrapper main#mainContainer {
+        margin: 0;
+        margin-left: 4%;
+        padding-bottom: 5%;
+    }
+}

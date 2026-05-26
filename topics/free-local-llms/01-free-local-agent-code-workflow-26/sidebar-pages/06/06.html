@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+ <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>06-</title>
+</head>
+<body class="dark-mode">
+    <div id="targetDiv">
+        <header class="header-codeColor-lesson">
+            <h3>6. <code class="r">extends</code> </h3>
+        </header>
+        <div class="main-container-codeColor">
+            <div class="steps-container">
+                <!-- 01 -->
+                <div tabindex="0" class="step-float">
+                    <div class="step-img ">
+                        <img src="parts/06/images/01.png" alt="">
+                    </div>
+                    <div  class="step-txt txt70">
+                        <h4>01</h4>
+                        <p>
+                            Use <code class="r">extends</code> to create a new class with another classe's methods
+
+                        </p>
+                        <div class="code-container">
+                            <pre tabindex="0" class="copy-code">
+class Person {
+    talk() {
+        return 'Talking'
+    }
+}
+class <span class="b">SuperHuman</span> <span class="r">extends</span> Person{
+    fly(){
+        return 'Flying'
+    }
+} 
+const you = new <code class="b">SuperHuman</code>()</pre>
+                        </div>
+                        <div class="code-container">
+                            <pre tabindex="0" class="copy-code">
+you.talk()</pre>
+                        </div>
+                        <div class="code-container">
+                            <pre tabindex="0" class="copy-code">
+you.fly()</pre>
+                        </div>
+                        <div class="code-container">
+                            <pre tabindex="0" class="copy-code ">
+const me = new Person()
+<span class="line-through">me.fly()</span></pre>
+                        </div>
+                        <p>
+                            The instance <code class="lsg">you</code> of <code><span class="b">SuperHuman</span>.prototype</code> has 
+                            both <code class="b">talk</code> and <code class="b">fly</code>.
+                            But there is no <code><span class="lsg">me</span>.fly()</code>
+                        </p>  
+                    </div>
+                </div>
+                
+                
+                
+                
+            </div>
+        </div>
+        <button tabindex="0" id="endNxtLesson">next lesson</button>
+    </div>
+    <script src="ex.js"></script>
+</body>
+</html>

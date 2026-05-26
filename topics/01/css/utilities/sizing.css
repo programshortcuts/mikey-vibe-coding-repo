@@ -1,0 +1,25 @@
+.page-header.grid {
+    .box {
+        width: 100%;
+    }
+    .box > .a {
+        border: 1px solid red;
+        height: 100%;
+        width: 100%;
+    }
+    
+}
+.tutorialLink-darkModeBtn-container a#tutorialLink img {
+    width: 90%;
+    max-width: 280px;
+    max-height: 80px;
+
+}
+
+.side-bar ul>li {
+    width: 100%;
+}
+.side-bar ul>li>a {
+    width: 90%;
+    text-decoration: none;
+}

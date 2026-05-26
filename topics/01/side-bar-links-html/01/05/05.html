@@ -1,0 +1,112 @@
+
+<div id="targetDiv">
+    <div class="main-container">
+        <header>
+            <h3 id="targetHeaderh3" >5. Get Images from Docker Registries</h3>
+        </header>
+        <div class="steps-container">
+            <!-- 01 -->
+            <div tabindex="0" class="step-float" data-video="https://www.youtube.com/watch?app=desktop&v=pg19Z8LL06w" 
+            data-timestamp="1694">
+                <div class="step-vid">
+                    <video playsinline webkit-playsinline poster="sidebar-links/05/images/01.png"
+                        src="sidebar-links/05/images/01.mov"></video>
+                </div>
+                <div  class="step-txt ">
+                    <h4>01</h4>
+                    <p>
+                        Find images at <a tabindex="0" target="_blank" href="https://hub.docker.com/">docker hub</a>
+                        the <span class="g">green</span> ones marked <strong class="g">Official...</strong> are maintained by 
+                        docker
+                    </p>
+                    <p>
+                        You can get alot of pre made stuff like for 
+                    </p>
+                    <ul>
+                        <li>Mongo</li>
+                        <li>Postgres</li>
+                        <li>Redis</li>
+                        <li>etc..</li>
+                    </ul>
+                    <p>
+                        <span class="r">**NOTe</span> you do Not have to sign up
+                    </p>
+                </div>
+            </div>
+            <!-- 02   -->
+                <div tabindex="0" class="step-float" data-video="https://www.youtube.com/watch?app=desktop&v=pg19Z8LL06w"
+                data-timestamp="1240">
+                <div class="step-vid">
+                    <video playsinline webkit-playsinline poster="sidebar-links/05/images/02.png"
+                        src="sidebar-links/05/images/02.mov"></video>
+                </div>
+                <div class="step-txt">
+                    <h4>02</h4>
+                    <p>
+                        Images have different <i>versions</i> defined as <i>tags</i>
+                        located in Images page clicked, example the first <strong>Redis</strong>
+                        image at
+                        <a tabindex="0" target="_blank" href="https://hub.docker.com/_/redis#:~:text=Supported%20tags%20and%20respective%20Dockerfile%20links
+                        ">https://hub.docker.com/_/redis</a>
+                    </p>
+                    <p class="r">
+                        **NOTE, make sure to click text portion of image
+                    </p>
+                    
+                </div>
+            </div>
+            <!-- 03 -->
+            <div tabindex="0" class="step-float" data-video="https://www.youtube.com/watch?app=desktop&v=pg19Z8LL06w"
+                data-timestamp="1877">
+                <div class="step-img">
+                    <img src="sidebar-links/05/images/03.png" alt="">
+                </div>
+                <div class="step-txt">
+                    <h4>03</h4>
+                    <p>
+                        You can use
+                    </p>
+                    <div class="code-container">
+                        <pre readonly tabindex="0" class="copy-code">
+<span class="m">docker pull</span></pre>
+                    </div>
+                    <p>
+                        whatever image you want, but if you don't specify a version with <code>:</code> 
+                        <br>(i believe) <br>
+                        you automatically download the <code class="b">latest</code> one seen at top
+                    </p>
+                    <p>
+                        Select specific <span class="b">tag</span> ,
+                    </p>
+                    <div class="code-container">
+                        <pre readonly tabindex="0" class="copy-code">
+docker pull &lt;name>:<span class="b">&lt;tag></span>
+                        </pre>
+                    </div>  
+                </div>
+            </div>
+            <!-- 04 -->
+            <div tabindex="0" class="step-float" data-video="https://www.youtube.com/watch?app=desktop&v=pg19Z8LL06w"
+                data-timestamp="1948">
+                <div class="step-vid">
+                    <video playsinline webkit-playsinline poster="sidebar-links/05/images/04.png"
+                        src="sidebar-links/05/images/04.mov"></video>
+                </div>
+                <div class="step-txt">
+                    <h4>04</h4>
+                    <p>
+                        Find the official <strong>ngnix</strong> images seen in tutorial,
+                        use  the command to get ngnix versions with tagname, 
+                    </p>
+                    <p>
+                        <span class="r">Example is old</span> they used <code>:1.23</code>
+                    </p>
+                    <div class="code-container">
+                        <pre readonly tabindex="0" class="copy-code">
+docker pull ngnix</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

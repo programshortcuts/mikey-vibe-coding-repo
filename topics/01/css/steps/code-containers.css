@@ -1,0 +1,20 @@
+.code-container>textarea.copy-code,
+.code-container>pre.copy-code {
+    font-size: 80%;
+    border: 1px solid black;
+    overflow: auto;
+    /* allow both directions */
+    max-width: 90%;
+    /* prevent overflow outside container */
+    max-height: 300px;
+    /* or any height you like */
+    white-space: pre;   
+    /* keep formatting but allow scroll */
+    display: block;
+    margin: 2%;
+    width: fit-content;
+    min-width: 300px;
+    padding: 1% 0;
+    padding-left: 1%;
+    border-radius: 8px;
+}

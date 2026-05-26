@@ -1,0 +1,76 @@
+Technical Debt Notes
+
+A running list of known quirks, workarounds, and areas to revisit when time allows.
+
+1. Sidebar Hiding Quirk
+
+ID: TD-001
+
+Location: playPauseVideos-colorCode.js → togglePlayVidSize
+
+Description: When interacting with video elements, calling togglePlayVidSize() toggles the sidebar’s .deactive class, which hides the sidebar unexpectedly in non-step/step-float contexts.
+
+Current Behavior: Functions well as a feature for enlarging videos, but also causes unintended sidebar hiding.
+
+Temporary Workaround: Keep this behavior for now since it's not critical and actually improves video focus.
+
+Future Action:
+
+Investigate event targets and how toggleBar() is triggered.
+
+Add conditionals to only toggle the sidebar when a .step or .step-float ancestor is present.
+
+Consider using element.closest('.step, .step-float') for scoping.
+
+Add unit or manual tests to confirm stability.
+
+Date Logged: 2025-05-15
+
+Template for New Technical Debt Items
+
+Use this template to log new items:
+
+ID: Unique identifier (e.g., TD-002)
+
+Location: File and function/module name
+
+Description: What’s happening and under what conditions
+
+Current Behavior: How it behaves now, including workarounds
+
+Temporary Workaround: How you’re getting by temporarily
+
+Future Action: Steps to fully resolve
+
+Date Logged: YYYY-MM-DD
+
+
+
+
+
+
+
+.md 
+Technical Debt
+
+A running list of known quirks, workarounds, and areas to revisit when time allows.
+
+TD-001: Sidebar Hiding Quirk
+
+Location: playPauseVideos-colorCode.js → togglePlayVidSize
+
+Description: Enlarging videos inadvertently toggles the sidebar’s .deactive class, hiding it in non-step/step-float contexts.
+
+Current Behavior: This behavior enhances video focus but also causes an unintended sidebar hide when interacting with <video> elements outside core steps.
+
+Temporary Workaround: Retain current functionality until core features are shipped.
+
+Future Action:
+
+Scope sidebar toggling by checking element.closest('.step, .step-float') before applying classes.
+
+Refactor toggleImg and togglePlayVidSize to separate video enlargement from sidebar logic.
+
+Write tests or manual reproduction steps to validate fixes.
+
+Date Logged: 2025-05-15
