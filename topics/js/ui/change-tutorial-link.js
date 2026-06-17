@@ -1,5 +1,6 @@
 // change-tutorial-link.js
 import { tutorialLink } from "../core/main-script.js";
+let default_time = 65
 export function initTutorialLink() {
     tutorialLink.addEventListener('click', e => {
         // e.preventDefault()
@@ -20,15 +21,17 @@ export function changeTutorialLink(e) {
     const vidBase = source.getAttribute('data-video');
     let ts = source.getAttribute('data-timestamp') ;
     if(!ts){
-        ts = 65
-    }
-    if (!vidBase) return tutorialLink;
+        ts = default_time
+    } else {
 
-    let vidHref = vidBase;
-    if (ts) {
-        vidHref += (vidBase.includes('?') ? '&' : '?') + `t=${ts}s`;
+        if (!vidBase) return tutorialLink;
+        
+        let vidHref = vidBase;
+        if (ts) {
+            vidHref += (vidBase.includes('?') ? '&' : '?') + `t=${ts}s`;
+        }
+        
+        tutorialLink.setAttribute('href', vidHref);
     }
-
-    tutorialLink.setAttribute('href', vidHref);
     return tutorialLink;
 }
