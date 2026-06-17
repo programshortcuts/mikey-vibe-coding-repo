@@ -5,7 +5,6 @@ export function pauseAllVideos({ allVids }) {
     allVids.forEach(vid => {
         vid.classList.remove("enlarge");
         vid.classList.remove("first-vid-enlarge");
-        vid.style.border = "none";
         if (!vid.paused) {
             vid.pause();
         }

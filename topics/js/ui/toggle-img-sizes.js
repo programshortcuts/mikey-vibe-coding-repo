@@ -8,7 +8,6 @@ export function toggleSingleImage(img) {
     // denlargeAllImages()
     if(img){
         img.classList.toggle("enlarge");
-        img.style.zIndex = img.classList.contains("enlarge") ? 100 : 0;
     }
 }
 if(allImgs){
@@ -25,7 +24,6 @@ if(allImgs){
 export function denlargeAllImages() {
     allImgs.forEach(img => {
         if (img.classList.contains('enlarge')) img.classList.remove("enlarge");
-        img.style.zIndex = 0;
     });
     // allVids.forEach(vid => {
     //     if (vid.classList.contains('first-vid-enlarge')) vid.classList.remove("first-vid-enlarge");
