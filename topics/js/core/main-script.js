@@ -10,6 +10,8 @@ import { sideBarNav, lastClickedSideBarLink, lastFocusedSideBarLink } from "../n
 import { mainContentNav, mainTargetDiv } from "../nav/main-content-nav.js";
 export const navBarLessonTitle = document.querySelector('#navBarLessonTitle');
 export const tutorialLink = document.querySelector('#tutorialLink')
+export const homepage = document.querySelector('#homePageLink')
+export const homepageSideBar = document.querySelector('#homepageSidebar')
 // This is event listener is sloppy, fix in colorCode template
 navBarLessonTitle.addEventListener('keydown', e => {
     let key = e.key.toLowerCase()
@@ -79,6 +81,7 @@ function setupGlobalKeyListener() {
             return
         }
         
+        
         // /////////////////       I DID IT !!!!!!!!!         /////////////////
         const allowedKeys = ['b','c','d','e','h','p','n']
         if(allowedKeys.includes(key)) {
@@ -110,6 +113,17 @@ function setupGlobalKeyListener() {
             default:
                 // Nothing now
                 break;
+        }
+
+        // Remove this once you implement best letterfocus / keyboard nav
+        if (e.key.toLowerCase() === 'h') {
+            if (e.target.id === 'homepageSidebar'){
+                
+                homepage.focus()
+            } else
+            if (e.target.dataset.id === 'homePageLink'){
+                homepageSideBar.focus()
+            }
         }
     });
 }

@@ -65,10 +65,10 @@ export function injectContent(href) {
             });
 
             // reset focus safely (prevents weird sidebar leaks)
-            requestAnimationFrame(() => {
-                const firstStep = mainTargetDiv.querySelector(".step-float");
-                if (firstStep) firstStep.focus();
-            });
+            // requestAnimationFrame(() => {
+            //     const firstStep = mainTargetDiv.querySelector(".step-float");
+            //     if (firstStep) firstStep.focus();
+            // });
 
         })
         .catch(err => {

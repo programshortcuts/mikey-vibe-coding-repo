@@ -1,4 +1,5 @@
 // side-bar-nav.js
+import { homepage } from "../core/main-script.js";
 import { handleMKey } from "./m-key-handler.js";
 import { changeTutorialLink } from "../ui/change-tutorial-link.js";
 import { sideBar, sideBarBtn } from "../ui/toggle-side-bar.js";
@@ -9,6 +10,7 @@ import { mainTargetDiv } from "./main-content-nav.js";
    STATE
 ========================= */
 export let allSideBarLinks = [...document.querySelectorAll('.side-bar-links a')];
+export let parentSideBarLis = [...document.querySelectorAll('.side-bar-links ')];
 export let lastClickedSideBarLink = null;
 export let lastFocusedSideBarLink = null;
 
@@ -65,10 +67,12 @@ allSideBarLinks.forEach((el, i) => {
     // CLICK
     el.addEventListener('click', e => {
         e.preventDefault();
-        lastClickedSideBarLink = el;
         injectContent(el.href);
         console.log('here',e.target)
         changeTutorialLink(e);
+        
+        lastClickedSideBarLink = el;
+        
     });
 
     // ENTER
@@ -77,13 +81,31 @@ allSideBarLinks.forEach((el, i) => {
 
         if (key === 'enter') {
             e.preventDefault();
-            lastClickedSideBarLink = el;
+            
             injectContent(el.href);
             changeTutorialLink(e);
+            if (e.target == lastClickedSideBarLink) {
+                console.log('ehre')
+                requestAnimationFrame(() => {
+                    const firstStep = mainTargetDiv.querySelector(".step-float");
+                    if (firstStep) firstStep.focus();
+                    console.log('here')
+                    return
+                });
+            }
+            lastClickedSideBarLink = el;
         }
 
         if (key === 'm') {
             handleMKey({ e, focusZone: mainTargetDiv });
+        }
+        if (key === 'h') {
+            if (!e.target.dataset.id === 'homePageLink') {
+                e.preventDefault()
+                homepage.focus()
+                return
+            }
+
         }
     });
 
@@ -189,6 +211,10 @@ sideBarBtn.addEventListener('keydown', e => {
         iSideBarLinks = 0
         allSideBarLinks[0].focus()
         // mainTargetDiv.focus();
+    }
+    if(!isNaN(e.key.toLowerCase())){
+        const intLet = parseInt(e.key.toLowerCase())
+        allSideBarLinks[intLet - 1].focus()
     }
     
 });

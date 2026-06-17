@@ -1,6 +1,7 @@
 
 #targetDiv>.main-container {
     display: flex;
+    background-color: blue !important;
     flex-direction: column;
 }
 /* steps.css */
