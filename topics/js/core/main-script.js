@@ -1,5 +1,6 @@
 // main-script.js
 // ===== Imports =====
+import { initTutorialLink } from "../ui/change-tutorial-link.js";
 import { letterFocus } from "../nav/letter-focus.js";
 import { getFocusZone } from "../nav/get-focus-zone.js";
 import { initDropDowns,hideTopicSnips } from "../ui/drop-downs-sidebar-temp.js";
@@ -8,7 +9,7 @@ import { initToggleSidebar, mainContainer, sideBar, sideBarBtn } from "../ui/tog
 import { sideBarNav, lastClickedSideBarLink, lastFocusedSideBarLink } from "../nav/side-bar-nav.js";
 import { mainContentNav, mainTargetDiv } from "../nav/main-content-nav.js";
 export const navBarLessonTitle = document.querySelector('#navBarLessonTitle');
-
+export const tutorialLink = document.querySelector('#tutorialLink')
 // This is event listener is sloppy, fix in colorCode template
 navBarLessonTitle.addEventListener('keydown', e => {
     let key = e.key.toLowerCase()
@@ -24,6 +25,7 @@ document.addEventListener('DOMContentLoaded', initMain);
 function initMain(e) {
     // Prevent re-initialization if script runs twice (e.g. reinjected content)
     if (window._mainScriptInitialized) return;
+    initTutorialLink()
     window._mainScriptInitialized = true;
     // Initialize UI elements
     initDropDowns({ e });
@@ -72,6 +74,11 @@ function setupGlobalKeyListener() {
         if (!e || !e.key) return;
         const key = e.key.toLowerCase();
         let focusZone = getFocusZone({ e });
+        if (e.key.toLowerCase() === 't') {
+            tutorialLink.focus()
+            return
+        }
+        
         // /////////////////       I DID IT !!!!!!!!!         /////////////////
         const allowedKeys = ['b','c','d','e','h','p','n']
         if(allowedKeys.includes(key)) {

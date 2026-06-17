@@ -1,9 +1,10 @@
 // step-nav.js
+import { changeTutorialLink } from "../ui/change-tutorial-link.js"
+import { tutorialLink } from "../core/main-script.js"
 import { videoControls, pauseAllVideos, toggleVideoSizeClick} from "../ui/playStepVid.js" 
 import { mainTargetDiv } from "./main-content-nav.js"
 import { toggleSingleImage,denlargeAllImages } from "../ui/toggle-img-sizes.js"
 import { getFocusZone } from "./get-focus-zone.js"
-import { changeTutorialLink } from "../ui/change-tutorial-link.js"
 import { lastClickedSideBarLink } from "./side-bar-nav.js"
 import { handleMKey } from "./m-key-handler.js"
 import { mainContainer } from "../ui/toggle-side-bar.js"

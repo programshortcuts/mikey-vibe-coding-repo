@@ -1,7 +1,15 @@
 // change-tutorial-link.js
+import { tutorialLink } from "../core/main-script.js";
+export function initTutorialLink() {
+    tutorialLink.addEventListener('click', e => {
+        // e.preventDefault()
+        changeTutorialLink(e)
 
+    })
+
+}
 export function changeTutorialLink(e) {
-    const tutorialLink = document.querySelector('#tutorialLink');
+    
     if (!tutorialLink) return null;
 
     const source = e.target.closest('[data-video], [data-timestamp], [data-tinestamp]')
