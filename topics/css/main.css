@@ -1,3 +1,4 @@
+@import url('dark-mode.css');
 @import url('responsive.css');
 /* @import url('steps.css'); */
 /* uis */
@@ -7,10 +8,7 @@
 /* utilities -> header */
 @import url('utilities/header/grid.css');
 @import url('utilities/header/layout.css');
-/* utilities -> steps */
-@import url('steps/step-text.css');
-@import url('steps/code-containers.css');
-@import url('steps/imgSizes.css');
+
 /* utilities */
 @import url('utilities/borders.css');
 @import url('utilities/colors.css');
@@ -21,6 +19,10 @@
 @import url('utilities/sizing.css');
 @import url('utilities/spacing.css');
 @import url('utilities/text.css');
+/* utilities -> steps */
+@import url('steps/step-text.css');
+@import url('steps/code-containers.css');
+@import url('steps/imgSizes.css');
 *{
     margin: 0;
     padding: 0;

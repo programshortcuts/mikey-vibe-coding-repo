@@ -1,8 +1,8 @@
 
-#targetDiv>.main-container {
+#targetDiv .main-container {
     display: flex;
-    background-color: blue !important;
-    flex-direction: column;
+    flex-direction: column !important;
+    border: 10px solid red !important;
 }
 /* steps.css */
 .steps-container {
