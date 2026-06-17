@@ -190,6 +190,10 @@ sideBarBtn.addEventListener('keydown', e => {
         allSideBarLinks[0].focus()
         // mainTargetDiv.focus();
     }
+    if (e.key.toLowerCase() === 't') {
+        const tutorialLink = document.querySelector('#tutorialLink')
+        tutorialLink.focus()
+    }
 });
 
 sideBarBtn.addEventListener('focus', () => {

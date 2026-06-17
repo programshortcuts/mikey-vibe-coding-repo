@@ -28,3 +28,6 @@
     padding: 1% 3%;
     width: 100%;
 }
+#tutoralLink:active{
+    border: 4px solid var(--bluecolor);
+}

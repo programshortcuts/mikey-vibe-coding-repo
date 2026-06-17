@@ -1,6 +1,7 @@
 :root{
     /* --bkgrnd: rgb(115, 108, 108); */
     --bcolor: rgb(115, 108, 108);
+    --bluecolor: rgb(108, 113, 115);
 }
 body{
     background-color: whitesmoke;
