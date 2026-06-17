@@ -24,7 +24,7 @@
             form-action 'self';
     ">
 </head>
-<body class="">
+<body class="dark-mode">
     <div class="page-wrapper">
         <header class="page-header grid">
             <div class="box back-link-container">
@@ -40,9 +40,9 @@
                 </a>
             </div>
             <div class="box tutorialLink-darkModeBtn-container">
-                <a rel="noopener noreferrer" id="tutorialLink" target="_blank"  data-video="https://www.youtube.com/watch?v=UngVdAsQEiU"
-                data-timestamp="65"
-                     href="https://www.youtube.com/watch?v=WC0NOMb3Yn0&vl=en-US">
+                <a rel="noopener noreferrer" id="tutorialLink" target="_blank"  data-video="https://www.youtube.com/watch?v=WC0NOMb3Yn0"
+                
+                     href="https://www.youtube.com/watch?v=WC0NOMb3Yn0">
                     <img src="images/mike-vibe-code-Ollama-full-tutorial-begin.jpg" alt="">
                 </a>
                 <button tabindex="0" id="darkModeBtn">dark Mode</button>
@@ -54,7 +54,13 @@
         </nav>
         <main class="main-container">
             <aside tabindex="0" class="side-bar ">
-                <i  id="sideBarBtn" tabindex="0" class="bx bx-menu"></i>
+                <svg tabindex="0" data-nav-target="side-bar-btn" id="sideBarBtn" xmlns="http://www.w3.org/2000/svg" width="24"
+                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
                 <div class="side-bar-links-container">
                     <!-- FOR now use #topicsTempId -->
                     <a tabindex="0" id="topic" href="#" class="drop-down topic" >

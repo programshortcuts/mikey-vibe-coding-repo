@@ -18,7 +18,10 @@ export function changeTutorialLink(e) {
     if (!source) return tutorialLink;
 
     const vidBase = source.getAttribute('data-video');
-    const ts = source.getAttribute('data-timestamp') || source.getAttribute('data-tinestamp');
+    let ts = source.getAttribute('data-timestamp') ;
+    if(!ts){
+        ts = 65
+    }
     if (!vidBase) return tutorialLink;
 
     let vidHref = vidBase;
