@@ -22,7 +22,6 @@ export const homepageSideBar = document.querySelector('#homepageSidebar')
 navBarLessonTitle.addEventListener('keydown', e => {
     let key = e.key.toLowerCase()
     if (key === 's') {
-        console.log('ehre')
         sideBarBtn.focus()
         scrollTo(0, 0)
         return

@@ -98,13 +98,22 @@ export function initStepNavigation({ mainTargetDiv}){
                         stepClicked = true
                         toggleSingleImage(stepImgVid)
                         const firstCopyCode = e.target.querySelector('.copy-code')
+                        console.log('ehre')
                         if(stepImgVid){
+                            if(!stepImgVid){
+                                stepClicked = false
+                                return
+                            }
                             if(stepImgVid.classList.contains('enlarge') && stepClicked){
                                 if(firstCopyCode){
                                     firstCopyCode.focus()
                                 }
                             }
                         } else {
+                            if (!firstCopyCode) {
+                                stepClicked = false
+                                return
+                            }
                             if (firstCopyCode) {
                                 firstCopyCode.focus()
                             }
