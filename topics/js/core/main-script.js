@@ -1,5 +1,9 @@
 // main-script.js
 // ===== Imports =====
+import { injectContent } from "./inject-content.js";
+import { updateAllSideBarLinks } from "../nav/side-bar-nav.js";
+// import { allSideBarLinks } from "../nav/side-bar-nav.js";
+import { nxtBtn,prevBtn } from "./inject-content.js";
 import { initTutorialLink } from "../ui/change-tutorial-link.js";
 import { letterFocus } from "../nav/letter-focus.js";
 import { getFocusZone } from "../nav/get-focus-zone.js";
@@ -125,5 +129,23 @@ function setupGlobalKeyListener() {
                 homepageSideBar.focus()
             }
         }
+    });
+    nxtBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const allLinks = [...updateAllSideBarLinks()];
+
+        const currentIndex = allLinks.indexOf(lastClickedSideBarLink);
+
+        const startIndex = currentIndex === -1 ? 0 : currentIndex;
+
+        const nextLink = allLinks[startIndex + 1];
+
+        if (!nextLink) return;
+
+        // THIS is the important fix:
+        nextLink.focus();
+
+        nextLink.click();
     });
 }

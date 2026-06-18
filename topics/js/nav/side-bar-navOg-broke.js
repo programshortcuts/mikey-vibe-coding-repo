@@ -17,9 +17,7 @@ export let lastFocusedSideBarLink = null;
 let sideBarFocused = false;
 let iSideBarLinks = -1;
 let suppressIndexUpdate = false;
-export function updateAllSideBarLinks() {
-    return document.querySelectorAll('.side-bar-links a')
-}
+
 export function updateLastClicked(link) {
     let i = allSideBarLinks.indexOf(link)
     lastClickedSideBarLink = allSideBarLinks[i]
@@ -86,12 +84,14 @@ allSideBarLinks.forEach((el, i) => {
             
             injectContent(el.href);
             changeTutorialLink(e);
-            if (e.target == lastClickedSideBarLink) {
-                console.log('ehre')
+            if (e.target === lastFocusedSideBarLink){
+                console.log('here')
+                return
+            }
+            if (e.target == lastClickedSideBarLink ) {
                 requestAnimationFrame(() => {
                     const firstStep = mainTargetDiv.querySelector(".step-float");
                     if (firstStep) firstStep.focus();
-                    console.log('here')
                     return
                 });
             }
@@ -109,11 +109,14 @@ allSideBarLinks.forEach((el, i) => {
             }
 
         }
+        return
     });
 
     // FOCUS
     el.addEventListener('focus', () => {
         lastFocusedSideBarLink = el;
+        lastClickedSideBarLink = null
+        
         if (!suppressIndexUpdate) {
             iSideBarLinks = i;
         }
@@ -209,7 +212,6 @@ sideBarBtn.addEventListener('keydown', e => {
     }
     if (e.key.toLowerCase() === 'f') {
         e.preventDefault()
-        console.log(allSideBarLinks[0])
         iSideBarLinks = 0
         allSideBarLinks[0].focus()
         // mainTargetDiv.focus();
