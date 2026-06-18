@@ -126,14 +126,19 @@ allSideBarLinks.forEach((el, i) => {
     });
 
     // FOCUS
-    el.addEventListener('focus', () => {
+    el.addEventListener('focus', (e) => {
+
+        // 🔥 NEW: prevent sidebar from stealing focus after inject updates
+        if (document.activeElement === nxtBtn || document.activeElement === prevBtn) {
+            return;
+        }
+
         lastFocusedSideBarLink = el;
 
         if (!suppressIndexUpdate) {
             iSideBarLinks = i;
         }
 
-        // NEW: highlight sync
         setFocusedHighlight(el);
     });
 });
