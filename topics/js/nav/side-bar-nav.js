@@ -13,7 +13,7 @@ export let allSideBarLinks = [...document.querySelectorAll('.side-bar-links a')]
 export let parentSideBarLis = [...document.querySelectorAll('.side-bar-links ')];
 export let lastClickedSideBarLink = null;
 export let lastFocusedSideBarLink = null;
-
+import { nxtBtn,prevBtn } from "../core/inject-content.js";
 let sideBarFocused = false;
 let iSideBarLinks = -1;
 let suppressIndexUpdate = false;
@@ -104,7 +104,6 @@ allSideBarLinks.forEach((el, i) => {
                 requestAnimationFrame(() => {
                     const firstStep = mainTargetDiv.querySelector(".step-float");
                     if (firstStep) firstStep.focus();
-                    console.log('here')
                     return
                 });
             }
@@ -129,9 +128,9 @@ allSideBarLinks.forEach((el, i) => {
     el.addEventListener('focus', (e) => {
 
         // 🔥 NEW: prevent sidebar from stealing focus after inject updates
-        if (document.activeElement === nxtBtn || document.activeElement === prevBtn) {
-            return;
-        }
+        // if (document.activeElement === nxtBtn || document.activeElement === prevBtn) {
+        //     return;
+        // }
 
         lastFocusedSideBarLink = el;
 

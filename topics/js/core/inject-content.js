@@ -1,6 +1,6 @@
 // inject-content.js
 let iAllSideBarLinks = 0;
-
+let lockedFocusEl = null;
 import { updateAllSideBarLinks, lastClickedSideBarLink, updateLastClicked, getHrefFromLink } from "../nav/side-bar-nav.js";
 import { mainContainer } from "../ui/toggle-side-bar.js";
 import { mainTargetDiv } from "../nav/main-content-nav.js";
@@ -17,7 +17,6 @@ export const prevBtn = document.querySelector('#prevBtn');
 export const lessonBtnsContainer = document.querySelector('.lesson-btns-container');
 
 // 🔥 NEW: track what should keep focus across DOM updates
-let lockedFocusEl = null;
 
 export function injectContent(href) {
     fetch(href)
@@ -29,7 +28,7 @@ export function injectContent(href) {
 
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
-
+            lockedFocusEl = document.activeElement;
             doc.querySelectorAll("[src], [href], [action]").forEach(el => {
                 ["src", "href", "action"].forEach(attr => {
                     const val = el.getAttribute(attr);
@@ -65,10 +64,12 @@ export function injectContent(href) {
                 addCopyCode();
                 updateImgs();
 
-                // 🔥 NEW: restore focus ONLY if it was a control button
-                if (lockedFocusEl === nxtBtn || lockedFocusEl === prevBtn) {
-                    lockedFocusEl.focus();
-                }
+                // 🔥 FORCE FOCUS RESTORE AFTER EVERYTHING
+                requestAnimationFrame(() => {
+                    if (lockedFocusEl === nxtBtn || lockedFocusEl === prevBtn) {
+                        lockedFocusEl.focus();
+                    }
+                });
             });
 
         })
