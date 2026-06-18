@@ -64,11 +64,7 @@ export function injectContent(href) {
                 updateImgs();
             });
 
-            // reset focus safely (prevents weird sidebar leaks)
-            requestAnimationFrame(() => {
-                const firstStep = mainTargetDiv.querySelector(".step-float");
-                if (firstStep) firstStep.focus();
-            });
+            
 
         })
         .catch(err => {

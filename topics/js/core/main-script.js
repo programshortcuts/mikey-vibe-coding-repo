@@ -148,4 +148,31 @@ function setupGlobalKeyListener() {
 
         nextLink.click();
     });
+    function setHighlight(el) {
+        document.querySelectorAll('.side-bar-links a.highlight')
+            .forEach(a => a.classList.remove('highlight'));
+
+        el?.classList.add('highlight');
+    }
+    prevBtn?.addEventListener('click', () => {
+        const links = [...updateAllSideBarLinks()];
+        const current = links.indexOf(lastClickedSideBarLink);
+
+        const prevIndex = current - 1;
+
+        if (prevIndex < 0) return;
+
+        const prevLink = links[prevIndex];
+
+        lastClickedSideBarLink = prevLink;
+
+        setHighlight(prevLink);
+        injectContent(prevLink.href);
+    });
+
+    prevBtn?.addEventListener('keydown', (e) => {
+        if (e.key.toLowerCase() === 'enter') {
+            prevBtn.click();
+        }
+    });
 }
