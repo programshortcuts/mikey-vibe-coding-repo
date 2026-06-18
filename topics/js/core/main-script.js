@@ -4,8 +4,8 @@ import { injectContent } from "./inject-content.js";
 import { updateAllSideBarLinks } from "../nav/side-bar-nav.js";
 // import { allSideBarLinks } from "../nav/side-bar-nav.js";
 // import { nxtBtn,prevBtn } from "./inject-content.js";
-export const nxtBtn = document.querySelector('#endNxtBtn');
-export const prevBtn = document.querySelector('#prevBtn');
+const nxtBtn = document.querySelector('#endNxtBtn');
+const prevBtn = document.querySelector('#prevBtn');
 import { initTutorialLink } from "../ui/change-tutorial-link.js";
 import { letterFocus } from "../nav/letter-focus.js";
 import { getFocusZone } from "../nav/get-focus-zone.js";
@@ -147,7 +147,7 @@ function setupGlobalKeyListener() {
         if (!nextLink) return;
 
         // THIS is the important fix:
-        // nextLink.focus();
+        nextLink.focus();
 
         nextLink.click();
     });
@@ -165,7 +165,7 @@ function setupGlobalKeyListener() {
         if (!nextLink) return;
 
         // THIS is the important fix:
-        // nextLink.focus();
+        nextLink.focus();
 
         nextLink.click();
     });

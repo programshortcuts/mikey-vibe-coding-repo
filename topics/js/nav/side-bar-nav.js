@@ -13,44 +13,34 @@ export let allSideBarLinks = [...document.querySelectorAll('.side-bar-links a')]
 export let parentSideBarLis = [...document.querySelectorAll('.side-bar-links ')];
 export let lastClickedSideBarLink = null;
 export let lastFocusedSideBarLink = null;
-import { nxtBtn,prevBtn } from "../core/inject-content.js";
+
 let sideBarFocused = false;
 let iSideBarLinks = -1;
 let suppressIndexUpdate = false;
-
 export function updateAllSideBarLinks() {
     return document.querySelectorAll('.side-bar-links a')
 }
-
 export function updateLastClicked(link) {
     let i = allSideBarLinks.indexOf(link)
     lastClickedSideBarLink = allSideBarLinks[i]
     lastFocusedSideBarLink = allSideBarLinks[i]
 }
-
 export function getHrefFromLink(link) {
     let href = lastClickedSideBarLink.href
     return link?.getAttribute('href') || null;
 }
-
-/* =========================
-   NEW: FOCUS HIGHLIGHT HELPER
-========================= */
-function setFocusedHighlight(el) {
-    if (!el) return;
-
-    if (lastFocusedSideBarLink) {
-        lastFocusedSideBarLink.classList.remove('highlight');
-    }
-
-    lastFocusedSideBarLink = el;
-    el.classList.add('highlight');
-}
-
 /* =========================
    INITIAL LOAD
 ========================= */
 const autoLink = allSideBarLinks.find(el => el.hasAttribute('autofocus'));
+
+if (autoLink) {
+    lastClickedSideBarLink = autoLink;
+    lastFocusedSideBarLink = autoLink;
+    injectContent(autoLink.href);
+} else {
+    injectContent('homepage.html');
+}
 
 /* =========================
    HELPERS
@@ -80,13 +70,11 @@ allSideBarLinks.forEach((el, i) => {
     el.addEventListener('click', e => {
         e.preventDefault();
         injectContent(el.href);
-        console.log('here', e.target)
+        console.log('here',e.target)
         changeTutorialLink(e);
-
+        
         lastClickedSideBarLink = el;
-
-        // NEW: sync focus so highlight works on click too
-        el.focus();
+        
     });
 
     // ENTER
@@ -95,51 +83,40 @@ allSideBarLinks.forEach((el, i) => {
 
         if (key === 'enter') {
             e.preventDefault();
-
+            
             injectContent(el.href);
             changeTutorialLink(e);
-
             if (e.target == lastClickedSideBarLink) {
                 console.log('ehre')
                 requestAnimationFrame(() => {
                     const firstStep = mainTargetDiv.querySelector(".step-float");
                     if (firstStep) firstStep.focus();
+                    console.log('here')
                     return
                 });
             }
-
             lastClickedSideBarLink = el;
         }
 
         if (key === 'm') {
             handleMKey({ e, focusZone: mainTargetDiv });
         }
-
         if (key === 'h') {
             if (!e.target.dataset.id === 'homePageLink') {
                 e.preventDefault()
                 homepage.focus()
                 return
             }
+
         }
     });
 
     // FOCUS
-    el.addEventListener('focus', (e) => {
-        console.log('here')
-        removeAllHighlights()
-        // 🔥 NEW: prevent sidebar from stealing focus after inject updates
-        // if (document.activeElement === nxtBtn || document.activeElement === prevBtn) {
-        //     return;
-        // }
-
+    el.addEventListener('focus', () => {
         lastFocusedSideBarLink = el;
-
         if (!suppressIndexUpdate) {
             iSideBarLinks = i;
         }
-
-        setFocusedHighlight(el);
     });
 });
 
@@ -153,18 +130,8 @@ sideBar.addEventListener('focusout', () => sideBarFocused = false);
    MAIN KEYBOARD NAV
 ========================= */
 export function sideBarNav({ e, focusZone }) {
-    if (autoLink) {
-        lastClickedSideBarLink = autoLink;
-        lastFocusedSideBarLink = autoLink;
-        lastClickedSideBarLink.classList.add('highlight')
-        console.log(lastClickedSideBarLink)
-        injectContent(autoLink.href);
-    } else {
-        injectContent('homepage.html');
-    }
-
     if (focusZone !== 'sideBar') return;
-    if (e.target === sideBarBtn) {
+    if(e.target === sideBarBtn){
         return
     }
     if (!e?.key) return;
@@ -242,19 +209,19 @@ sideBarBtn.addEventListener('keydown', e => {
     }
     if (e.key.toLowerCase() === 'f') {
         e.preventDefault()
+        console.log(allSideBarLinks[0])
         iSideBarLinks = 0
         allSideBarLinks[0].focus()
+        // mainTargetDiv.focus();
     }
-
-    if (!isNaN(e.key.toLowerCase())) {
+    if(!isNaN(e.key.toLowerCase())){
         const intLet = parseInt(e.key.toLowerCase())
         allSideBarLinks[intLet - 1].focus()
     }
+    
 });
 
 sideBarBtn.addEventListener('focus', () => {
-    scrollTo(0, 0)
+    // sideBar.scrollIntoView({ behavior: "smooth", block: "start",inline:'start' });
+    scrollTo(0,0)
 });
-function removeAllHighlights(){
-    allSideBarLinks.forEach(el => el.classList.remove('highlight'))
-}

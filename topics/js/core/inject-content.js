@@ -1,7 +1,6 @@
 // inject-content.js
-let iAllSideBarLinks = 0;
-let lockedFocusEl = null;
-import { updateAllSideBarLinks, lastClickedSideBarLink, updateLastClicked, getHrefFromLink } from "../nav/side-bar-nav.js";
+let iAllSideBarLinks = 0
+import { allSideBarLinks,lastClickedSideBarLink,updateLastClicked,getHrefFromLink } from "../nav/side-bar-nav.js";
 import { mainContainer } from "../ui/toggle-side-bar.js";
 import { mainTargetDiv } from "../nav/main-content-nav.js";
 import { initStepNavigation } from "../nav/step-nav.js";
@@ -10,14 +9,11 @@ import { handleSKeySideBarNav } from "./main-script.js";
 
 import { updateImgs } from "../ui/toggle-img-sizes.js";
 import { addCopyCode } from "../ui/copy-code.js";
+export const nxtBtn = document.querySelector('#endNxtBtn')
+export const prevBtn = document.querySelector('#prevBtn')
 
-export const nxtBtn = document.querySelector('#endNxtBtn');
-export const prevBtn = document.querySelector('#prevBtn');
-
-export const lessonBtnsContainer = document.querySelector('.lesson-btns-container');
-
-// 🔥 NEW: track what should keep focus across DOM updates
-
+// Temporary fix, i'm quering step-floats again which i shouldn't
+export const lessonBtnsContainer = document.querySelector('.lesson-btns-container')
 export function injectContent(href) {
     fetch(href)
         .then(response => {
@@ -28,7 +24,8 @@ export function injectContent(href) {
 
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
-            lockedFocusEl = document.activeElement;
+
+            // 🔥 CLEAN INCOMING HTML (important)
             doc.querySelectorAll("[src], [href], [action]").forEach(el => {
                 ["src", "href", "action"].forEach(attr => {
                     const val = el.getAttribute(attr);
@@ -38,8 +35,11 @@ export function injectContent(href) {
                 });
             });
 
+            // 🔥 REMOVE ANY SCRIPT TAGS (prevents side effects)
             doc.querySelectorAll("script").forEach(el => el.remove());
 
+            // 🔥 OPTIONAL: remove inline style attributes if CSP is strict
+            // (this prevents the exact error you're seeing)
             doc.querySelectorAll("[style]").forEach(el => {
                 el.removeAttribute("style");
             });
@@ -51,26 +51,20 @@ export function injectContent(href) {
                 return;
             }
 
-            // 🔥 NEW: capture focus BEFORE DOM swap
-            lockedFocusEl = document.activeElement;
-
+            // 🔥 INJECT CLEAN HTML ONLY
             mainTargetDiv.innerHTML = content.innerHTML;
 
             scrollTo(0, 0);
 
+            // IMPORTANT: rebind everything AFTER DOM is stable
             requestAnimationFrame(() => {
                 initStepNavigation({ mainTargetDiv });
                 removeLastStep();
                 addCopyCode();
                 updateImgs();
-
-                // 🔥 FORCE FOCUS RESTORE AFTER EVERYTHING
-                requestAnimationFrame(() => {
-                    if (lockedFocusEl === nxtBtn || lockedFocusEl === prevBtn) {
-                        lockedFocusEl.focus();
-                    }
-                });
             });
+
+            
 
         })
         .catch(err => {
