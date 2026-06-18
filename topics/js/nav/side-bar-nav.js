@@ -126,7 +126,8 @@ allSideBarLinks.forEach((el, i) => {
 
     // FOCUS
     el.addEventListener('focus', (e) => {
-
+        console.log('here')
+        removeAllHighlights()
         // 🔥 NEW: prevent sidebar from stealing focus after inject updates
         // if (document.activeElement === nxtBtn || document.activeElement === prevBtn) {
         //     return;
@@ -254,3 +255,6 @@ sideBarBtn.addEventListener('keydown', e => {
 sideBarBtn.addEventListener('focus', () => {
     scrollTo(0, 0)
 });
+function removeAllHighlights(){
+    allSideBarLinks.forEach(el => el.classList.remove('highlight'))
+}
