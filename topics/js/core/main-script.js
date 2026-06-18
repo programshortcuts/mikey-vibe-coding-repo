@@ -3,7 +3,9 @@
 import { injectContent } from "./inject-content.js";
 import { updateAllSideBarLinks } from "../nav/side-bar-nav.js";
 // import { allSideBarLinks } from "../nav/side-bar-nav.js";
-import { nxtBtn,prevBtn } from "./inject-content.js";
+// import { nxtBtn,prevBtn } from "./inject-content.js";
+const nxtBtn = document.querySelector('#endNxtBtn');
+const prevBtn = document.querySelector('#prevBtn');
 import { initTutorialLink } from "../ui/change-tutorial-link.js";
 import { letterFocus } from "../nav/letter-focus.js";
 import { getFocusZone } from "../nav/get-focus-zone.js";
@@ -76,6 +78,7 @@ export function handleSKeySideBarNav(e) {
 }
 // ===== Global Key Listener =====
 function setupGlobalKeyListener() {
+    
     addEventListener('keydown', (e) => {
         if (!e || !e.key) return;
         const key = e.key.toLowerCase();
@@ -148,31 +151,31 @@ function setupGlobalKeyListener() {
 
         nextLink.click();
     });
-    function setHighlight(el) {
-        document.querySelectorAll('.side-bar-links a.highlight')
-            .forEach(a => a.classList.remove('highlight'));
+    prevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
 
-        el?.classList.add('highlight');
-    }
-    prevBtn?.addEventListener('click', () => {
-        const links = [...updateAllSideBarLinks()];
-        const current = links.indexOf(lastClickedSideBarLink);
+        const allLinks = [...updateAllSideBarLinks()];
 
-        const prevIndex = current - 1;
+        const currentIndex = allLinks.indexOf(lastClickedSideBarLink);
 
-        if (prevIndex < 0) return;
+        const startIndex = currentIndex === -1 ? 0 : currentIndex;
 
-        const prevLink = links[prevIndex];
+        const nextLink = allLinks[startIndex + 1];
 
-        lastClickedSideBarLink = prevLink;
+        if (!nextLink) return;
 
-        setHighlight(prevLink);
-        injectContent(prevLink.href);
+        // THIS is the important fix:
+        nextLink.focus();
+
+        nextLink.click();
     });
+    
+    
+}
 
-    prevBtn?.addEventListener('keydown', (e) => {
-        if (e.key.toLowerCase() === 'enter') {
-            prevBtn.click();
-        }
-    });
+function setHighlight(el) {
+    document.querySelectorAll('.side-bar-links a.highlight')
+        .forEach(a => a.classList.remove('highlight'));
+
+    el?.classList.add('highlight');
 }
