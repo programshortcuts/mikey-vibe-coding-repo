@@ -1,6 +1,6 @@
 // inject-content.js
 let iAllSideBarLinks = 0
-import { allSideBarLinks,lastClickedSideBarLink,updateLastClicked,getHrefFromLink } from "../nav/side-bar-nav.js";
+import { updateAllSideBarLinks, lastClickedSideBarLink,updateLastClicked,getHrefFromLink } from "../nav/side-bar-nav.js";
 import { mainContainer } from "../ui/toggle-side-bar.js";
 import { mainTargetDiv } from "../nav/main-content-nav.js";
 import { initStepNavigation } from "../nav/step-nav.js";
@@ -70,4 +70,5 @@ export function injectContent(href) {
         .catch(err => {
             console.error('Failed to load content:', err);
         });
+        
 }

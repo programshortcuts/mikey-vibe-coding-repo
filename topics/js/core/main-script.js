@@ -147,7 +147,7 @@ function setupGlobalKeyListener() {
         if (!nextLink) return;
 
         // THIS is the important fix:
-        nextLink.focus();
+        // nextLink.focus();
 
         nextLink.click();
     });
@@ -165,7 +165,7 @@ function setupGlobalKeyListener() {
         if (!nextLink) return;
 
         // THIS is the important fix:
-        nextLink.focus();
+        // nextLink.focus();
 
         nextLink.click();
     });
