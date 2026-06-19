@@ -16,10 +16,8 @@
     display: flex;
     flex-direction: column;
 
-    max-height: 200px;
-    max-width: 250px;
-    min-height: 200px;
-    min-width: 250px;
+    height: fit-content;
+    width: fit-content;
 
     pointer-events: auto;
     transition: all 0.05s ease;
@@ -47,7 +45,7 @@
 
     /* safety */
     max-width: 90vw;
-    max-height: 90vh !important;
+    max-height: 90vh;
 }
 
 /* IMAGE / VIDEO FILL */
