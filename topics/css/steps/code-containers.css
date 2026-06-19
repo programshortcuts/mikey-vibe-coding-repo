@@ -3,5 +3,7 @@
 .code-container>pre.copy-code {
     height: fit-content !important;
     max-width: 55vw !important;
-    max-height: 50vh
+    max-height: 50vh;
+    overflow: hidden;
+    overflow-y: scroll;
 }
