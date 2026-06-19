@@ -12,7 +12,7 @@
         /* color: purple; */
     }
 }
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 701px) {
     .step-float > .step-vid,
     .step-float > .step-img{
         min-height: 350px  !important;
@@ -20,6 +20,16 @@
     }
 }
 @media screen and (max-width: 700px) {
+    .step-vid.enlarge {
+    }
+    .step-img.enlarge{
+    
+        /* max-width: 90vw; */
+        max-width:  500px !important;
+        max-height: 300px !important;
+        transform: scale(2) !important;
+        transform: translate(-80%, -50%) scale(2);
+    }
     .side-bar-links-container > ul{
         margin: 0;
         margin-left: 15% !important;

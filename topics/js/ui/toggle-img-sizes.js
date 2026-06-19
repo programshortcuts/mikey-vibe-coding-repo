@@ -43,14 +43,7 @@ export function cycleStepMedia(step) {
     ];
 
     if (!media.length) return;
-    console.log(
-        'before',
-        step.dataset.mediaIndex,
-        [...media].map((el, i) => ({
-            i,
-            enlarge: el.classList.contains('enlarge')
-        }))
-    );
+    
     let index = Number(step.dataset.mediaIndex ?? -1);
 
     denlargeAllImages();

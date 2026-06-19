@@ -14,7 +14,6 @@ export function videoControls({ vid, e }) {
     if (!vid) return
     let key = e.keyCode;
     if (e.type == 'keydown') {
-        console.log('keydown')
         vidKeyCntrl({ vid, e, key })
     }
     if (e.type == 'click') {
@@ -22,6 +21,7 @@ export function videoControls({ vid, e }) {
     }
 }
 function vidKeyCntrl({ vid, e, key }) {
+    console.log()
     if (!vid) return
     if (e.type == 'click') {
         

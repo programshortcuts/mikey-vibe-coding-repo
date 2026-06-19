@@ -131,7 +131,6 @@ export function initStepNavigation({ mainTargetDiv}){
                         stepClicked = true
                         cycleStepMedia(stepFloat)
                         const firstCopyCode = e.target.querySelector('.copy-code')
-                        console.log('ehre')
                         if(stepImgVid){
                             if(!stepImgVid){
                                 stepClicked = false
@@ -178,7 +177,6 @@ export function initStepNavigation({ mainTargetDiv}){
             // let key = e.key.toLowerCase()
             // if(key === 'm'){
             //     // e.preventDefault()
-            //     console.log('here')
             //     const step = e.target.closest('.step-float')
             //     step.focus()
             // }
@@ -218,6 +216,10 @@ export function initStepNavigation({ mainTargetDiv}){
     });
 }
 function numStepNav(intLet){
+    if(intLet >= steps.length) {
+        steps[steps.length - 1].focus()
+        return
+    }
     if (!stepClicked) {
         if (intLet <= steps.length) {
             steps[intLet - 1].focus()
