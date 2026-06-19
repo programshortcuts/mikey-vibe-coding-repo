@@ -53,3 +53,11 @@
 .imgs-container > *> img{
     width: 100%;
 }
+
+.steps-floats-container {
+    width: 100%;
+    display: flex;
+}
+.steps-floats-container > .step-float{
+    flex-basis: 40%;
+}
