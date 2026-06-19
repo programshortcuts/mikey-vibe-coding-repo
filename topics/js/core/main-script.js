@@ -169,7 +169,7 @@ function setupGlobalKeyListener() {
         nextLink.click();
     });
     
-    
+        
 }
 
 function setHighlight(el) {

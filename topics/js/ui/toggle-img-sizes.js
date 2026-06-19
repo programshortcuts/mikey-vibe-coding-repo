@@ -66,3 +66,8 @@ export function cycleStepMedia(step) {
 
     step.dataset.mediaIndex = index;
 }
+export function clickToggleEnlarge({e}){
+    const parent = e.target.closest('.step-img') ? e.target.closest('.step-img') : e.target.closest('.step-vid')
+    console.log('ehre')
+    parent.classList.toggle('enlarge')
+}

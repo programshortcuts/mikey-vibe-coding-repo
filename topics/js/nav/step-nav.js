@@ -1,5 +1,6 @@
 // step-nav.js
 import {
+    clickToggleEnlarge,
     cycleStepMedia,
     denlargeAllImages,
     enlargeSingleMedia, updateImgs
@@ -28,8 +29,19 @@ function updateCurrentCopyCodes({step}){
     copyCodes = [...step.querySelectorAll('.copy-code')]
 }
 export function initStepNavigation({ mainTargetDiv}){
+    
     steps = [...mainTargetDiv.querySelectorAll('.step-float')]
     allStepImgVids = Array.from(mainTargetDiv.querySelectorAll(".step-img , .step-vid "));
+    document.addEventListener('pointerdown', (e) => {
+        const media = e.target.closest('.step-img, .step-vid');
+
+        // clicked media → ignore (your existing click handler handles it)
+        if (media) return;
+
+        // otherwise clear all enlarges
+        document.querySelectorAll('.step-img.enlarge, .step-vid.enlarge')
+            .forEach(el => el.classList.remove('enlarge'));
+    });
     updateImgs(mainTargetDiv);
     allVids = Array.from(mainTargetDiv.querySelectorAll(".step-vid > video"));
     allVids.forEach(vid => {
@@ -54,11 +66,29 @@ export function initStepNavigation({ mainTargetDiv}){
         });
     })
     allStepImgVids.forEach(el => {
-        el.addEventListener('pointerdown', e => {
+        el.addEventListener('click', e => {
             e.preventDefault();
             e.stopPropagation();
 
-            enlargeSingleMedia(el);
+            const step = e.target.closest('.step-float');
+            if (!step) return;
+
+            const media = e.target.closest('.step-img, .step-vid');
+            if (!media) return;
+
+            // toggle ONLY inside this step
+            const isAlreadyEnlarged = media.classList.contains('enlarge');
+
+            // clear only this step (not global DOM)
+            step.querySelectorAll('.step-img.enlarge, .step-vid.enlarge')
+                .forEach(el => el.classList.remove('enlarge'));
+
+            if (!isAlreadyEnlarged) {
+                media.classList.add('enlarge');
+            }
+
+            step.dataset.mediaIndex =
+                [...step.querySelectorAll('.step-img, .step-vid')].indexOf(media);
         });
     });
     steps.forEach((step, index,arr) => {
