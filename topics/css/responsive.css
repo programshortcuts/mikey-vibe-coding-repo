@@ -12,6 +12,13 @@
         /* color: purple; */
     }
 }
+@media screen and (min-width: 700px) {
+    .step-float > .step-vid,
+    .step-float > .step-img{
+        min-height: 350px  !important;
+        min-width:  350px  !important;
+    }
+}
 @media screen and (max-width: 700px) {
     .side-bar-links-container > ul{
         margin: 0;
