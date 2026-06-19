@@ -6,14 +6,72 @@
     <div class="steps-container">
         <!-- 01 -->
         <div tabindex="0" class="step-float" data-video="https://www.youtube.com/watch?v=WC0NOMb3Yn0" 
-            data-timestamp="1120">
-            <h4>01 - Create a directory somewhere</h4>
+            data-timestamp="1150">
+            <h4>01 - Create a Modelfile in same directory</h4>
+            <div class="step-img">
+                <img loading="lazy" src="side-bar-links-pages/05/images/01.png" alt="">
+            </div>
             
             <div class="step-txt ">
                 <p>
-                    To get the respone line by line like in chatbots, use this script
+                    Use this <code>Modelfile</code>, save it without <code>.txt</code>
+                    in the same directory as python script, i have it in my ollama-scripts directory
                 </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code">
+FROM llama3
 
+# set the temperature to 1 [higher is more creative, lower is more coherent]
+PARAMETER temperature 1
+
+# set the system message
+SYSTEM """
+You are Mario from Super Mario Bros. Answer as Mario, the assistant only.
+"""</pre>
+                </div>
+                <p>
+                    When I saved <code>modelFile</code> w/o extension, I got red lines and errors
+                    but I ran
+                </p>
+                <div class="code-container">
+                    <code tabindex="0" class="copy-code">
+ollama create mario -f Modelfile</code>
+                </div>
+                <p>
+                    and
+                </p>
+                <div class="code-container">
+                    <code tabindex="0" class="copy-code">
+ollama list</code>
+                </div>
+                <p>
+                    where you can see the model has been created with the <code>Modelfile</code>
+                </p>     
+                
+                
+            </div>
+            
+        </div>
+        <!-- 02 -->
+        <div tabindex="0" class="step-float" data-video="https://www.youtube.com/watch?v=WC0NOMb3Yn0" 
+            data-timestamp="1210">
+            <h4>02 - test and run model with</h4>
+            
+            <div class="step-vid ">
+                <video preload="none" playsinline webkit-playsinline poster="side-bar-links-pages/05/images/02.png"
+                src="side-bar-links-pages/05/images/02.mov"></video>
+                <div class="vid-cntrl-btns">
+                    <button class="fwdBtn">&lt;&lt;</button>
+                    <button class="playbtn">></button>
+                    <button class="rwdBtn">>></button>
+                </div>
+            </div>
+            
+            <div class="step-txt ">
+                <div class="code-container">
+                    <code tabindex="0" class="copy-code">
+ollam run mario</code>
+                </div>
                 
             </div>
             
