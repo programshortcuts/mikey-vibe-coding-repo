@@ -1,9 +1,13 @@
 // step-nav.js
+import {
+    cycleStepMedia,
+    denlargeAllImages,
+    enlargeSingleMedia, updateImgs
+} from "../ui/toggle-img-sizes.js"
 import { changeTutorialLink } from "../ui/change-tutorial-link.js"
 import { tutorialLink } from "../core/main-script.js"
 import { videoControls, pauseAllVideos, toggleVideoSizeClick} from "../ui/playStepVid.js" 
 import { mainTargetDiv } from "./main-content-nav.js"
-import { toggleSingleImage,denlargeAllImages } from "../ui/toggle-img-sizes.js"
 import { getFocusZone } from "./get-focus-zone.js"
 import { lastClickedSideBarLink } from "./side-bar-nav.js"
 import { handleMKey } from "./m-key-handler.js"
@@ -26,6 +30,7 @@ function updateCurrentCopyCodes({step}){
 export function initStepNavigation({ mainTargetDiv}){
     steps = [...mainTargetDiv.querySelectorAll('.step-float')]
     allStepImgVids = Array.from(mainTargetDiv.querySelectorAll(".step-img , .step-vid "));
+    updateImgs(mainTargetDiv);
     allVids = Array.from(mainTargetDiv.querySelectorAll(".step-vid > video"));
     allVids.forEach(vid => {
         vid.addEventListener('click', e => {
@@ -50,14 +55,12 @@ export function initStepNavigation({ mainTargetDiv}){
     })
     allStepImgVids.forEach(el => {
         el.addEventListener('pointerdown', e => {
-            e.preventDefault()
-            e.stopPropagation()
-            if(el.classList.contains('step-img')){
-                
-                toggleSingleImage(el)
-            }
+            e.preventDefault();
+            e.stopPropagation();
+
+            enlargeSingleMedia(el);
         });
-    })
+    });
     steps.forEach((step, index,arr) => {
         if (!step.dataset.listenerAdded) {
             step.setAttribute("tabindex", "0");
@@ -96,7 +99,7 @@ export function initStepNavigation({ mainTargetDiv}){
                     if (!e.shiftKey){
                         updateCurrentCopyCodes({step: stepFloat})
                         stepClicked = true
-                        toggleSingleImage(stepImgVid)
+                        cycleStepMedia(stepFloat)
                         const firstCopyCode = e.target.querySelector('.copy-code')
                         console.log('ehre')
                         if(stepImgVid){
@@ -121,7 +124,7 @@ export function initStepNavigation({ mainTargetDiv}){
                         lastStep = step
                     } else {
                         step.focus()
-                        toggleSingleImage(stepImgVid)
+                        cycleStepMedia(stepFloat)
                     }
                 }
                 if (stepImgVid && stepImgVid.classList.contains('step-vid') ) {
