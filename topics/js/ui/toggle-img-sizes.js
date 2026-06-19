@@ -37,26 +37,32 @@ export function enlargeSingleMedia(mediaEl) {
 
 export function cycleStepMedia(step) {
     if (!step) return;
-
+    
     const media = [
         ...step.querySelectorAll('.step-img, .step-vid')
     ];
 
     if (!media.length) return;
-
-    const currentIndex = media.findIndex(el =>
-        el.classList.contains('enlarge')
+    console.log(
+        'before',
+        step.dataset.mediaIndex,
+        [...media].map((el, i) => ({
+            i,
+            enlarge: el.classList.contains('enlarge')
+        }))
     );
+    let index = Number(step.dataset.mediaIndex ?? -1);
 
     denlargeAllImages();
 
-    const nextIndex = currentIndex + 1;
+    index++;
 
-    if (nextIndex >= media.length) {
+    if (index >= media.length) {
         step.dataset.mediaIndex = -1;
         return;
     }
 
-    media[nextIndex].classList.add('enlarge');
-    step.dataset.mediaIndex = nextIndex;
+    media[index].classList.add('enlarge');
+
+    step.dataset.mediaIndex = index;
 }
