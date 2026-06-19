@@ -54,10 +54,10 @@
     width: 100%;
 }
 
-.steps-floats-container {
+.step-floats-container {
     width: 100%;
     display: flex;
 }
-.steps-floats-container > .step-float{
+.step-floats-container > .step-float{
     flex-basis: 40%;
 }
