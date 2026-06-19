@@ -1,30 +1,31 @@
 
 <div id="targetDiv">
     <header>
-        <h3 id="targetHeaderh3" >01-02 figure out </h3>
+        <h3 id="targetHeaderh3" >01-03 Run /download model </h3>
     </header>
     <div class="steps-container">
         <!-- 01 -->
         <div tabindex="0" class="step-float" data-video="https://www.youtube.com/watch?v=WC0NOMb3Yn0" 
-            data-timestamp="320">
+            data-timestamp="367">
             <h4>01</h4>
-            <div class="step-vid ">
-                <video preload="none" playsinline webkit-playsinline poster="side-bar-links-pages/01/01-02/images/01.png"
-                src="side-bar-links-pages/01/01-02/images/01.mov"></video>
-                <div class="vid-cntrl-btns">
-                    <button class="fwdBtn">&lt;&lt;</button>
-                    <button class="playbtn">></button>
-                    <button class="rwdBtn">>></button>
-                </div>
-            </div>
+            
             <div class="step-content ">
                 <p>
-                    Go to <a rel="noopener noreferrer" class="copy-code"
-                    target="_blank" href="https://ollama.com/library">https://ollama.com/library</a>
-                    select and browsw model, are go to the models tab at 
-                    <a rel="noopener noreferrer" target="_blank" href="https://ollama.com/library">https://ollama.com/library</a>
-                    
+                    If you run a model with the <code>run</code>
+                    command, it will automatically install it 
                 </p>
+                <div class="code-container">
+                    <code tabindex="0" class="copy-code">
+ollama run llama3</code>
+                </div>
+                <p>
+                    run any model you want and ollama will replace the current one with it
+                </p>      
+                <div class="code-container">
+                    <code tabindex="0" class="copy-code">
+ollama run phi3</code>
+                </div>
+                
                 
                 
             </div>
