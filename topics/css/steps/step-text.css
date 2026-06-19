@@ -2,7 +2,6 @@
 #targetDiv .main-container {
     display: flex;
     flex-direction: column !important;
-    border: 10px solid red !important;
 }
 /* steps.css */
 .steps-container {
@@ -39,4 +38,18 @@
     align-self: center;
     align-self: center;
     margin: 0 5%;
+}
+
+.imgs-container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.imgs-container > *{
+    flex-basis: 40%;
+    /* width: 50%; */
+}
+.imgs-container > *> video,
+.imgs-container > *> img{
+    width: 100%;
 }
