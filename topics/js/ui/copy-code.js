@@ -2,7 +2,12 @@ export function addCopyCode() {
     const copyCodes = document.querySelectorAll('.copy-code')
     copyCodes.forEach(el => {
         el.addEventListener('keydown', e => {
-            if (e.key == 'c' && e.metaKey) {
+            const key = e.key.toLowerCase()
+            if (e.target.tagName == 'A') {
+                console.log('here')
+                return
+            }
+            if (key == 'c' && e.metaKey) {
                 console.log('yes')
                 if (e.target.value) {
                     copyTextToClipboard(e.target.value)
@@ -19,6 +24,7 @@ export function addCopyCode() {
         el.addEventListener('click', e => {
             e.preventDefault()
             e.stopPropagation()
+            if(e.target.tagName == 'A') return
             handleCopy(e)
             animate(el)
             const step = e.target.closest('.step-float')
@@ -36,7 +42,7 @@ export function addCopyCode() {
     function setupCopyShortcut(element) {
         element.addEventListener('keydown', e => {
             // Check Command (metaKey) + C (case-insensitive)
-            if (e.metaKey && (e.key === 'c' || e.key === 'C')) {
+            if (e.metaKey && (key === 'c' || key === 'C')) {
                 e.preventDefault(); // prevent default copy just to be safe
                 handleCopy(e.target);
             }
