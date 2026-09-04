@@ -45,6 +45,17 @@ if (autoLink) {
 /* =========================
    HELPERS
 ========================= */
+function setHighlight(el) {
+    document.querySelectorAll('.side-bar-links a.highlight')
+        .forEach(link => link.classList.remove('highlight'));
+
+    el?.classList.add('highlight');
+}
+
+function focusFirstStep() {
+    mainTargetDiv.querySelector('.step-float')?.focus();
+}
+
 function isVisible(el) {
     return el && el.offsetParent !== null;
 }
@@ -67,14 +78,19 @@ function getParentTopLink(subLink) {
 ========================= */
 allSideBarLinks.forEach((el, i) => {
     // CLICK
-    el.addEventListener('click', e => {
+    el.addEventListener('click', async e => {
         e.preventDefault();
-        injectContent(el.href);
-        console.log('here',e.target)
+
+        const sameLink = el === lastClickedSideBarLink;
+
+        await injectContent(el.href);
         changeTutorialLink(e);
-        
+
         lastClickedSideBarLink = el;
-        
+        lastFocusedSideBarLink = el;
+        setHighlight(el);
+
+        if (sameLink) focusFirstStep();
     });
 
     // ENTER
@@ -83,19 +99,19 @@ allSideBarLinks.forEach((el, i) => {
 
         if (key === 'enter') {
             e.preventDefault();
-            
-            injectContent(el.href);
-            changeTutorialLink(e);
-            if (e.target == lastClickedSideBarLink) {
-                console.log('ehre')
-                requestAnimationFrame(() => {
-                    const firstStep = mainTargetDiv.querySelector(".step-float");
-                    if (firstStep) firstStep.focus();
-                    console.log('here')
-                    return
-                });
-            }
-            lastClickedSideBarLink = el;
+
+            const sameLink = el === lastClickedSideBarLink;
+
+            injectContent(el.href).then(() => {
+                changeTutorialLink(e);
+                lastClickedSideBarLink = el;
+                lastFocusedSideBarLink = el;
+                setHighlight(el);
+
+                if (sameLink) focusFirstStep();
+            });
+
+            return;
         }
 
         if (key === 'm') {
@@ -162,10 +178,13 @@ export function sideBarNav({ e, focusZone }) {
 
     /* ---- FORWARD / BACK ---- */
     if (key === 'f' || key === 'a') {
+        e.preventDefault();
         suppressIndexUpdate = true;
 
         let current = visibleLinks.indexOf(activeEl);
-        if (current === -1) current = 0;
+        if (current === -1) {
+            current = key === 'f' ? -1 : visibleLinks.length;
+        }
 
         const delta = key === 'f'
             ? (e.shiftKey ? -1 : 1)

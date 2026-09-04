@@ -14,6 +14,7 @@ import { handleStepNav, lastStep } from "../nav/step-nav.js";
 import { initToggleSidebar, mainContainer, sideBar, sideBarBtn } from "../ui/toggle-side-bar.js";
 import { sideBarNav, lastClickedSideBarLink, lastFocusedSideBarLink } from "../nav/side-bar-nav.js";
 import { mainContentNav, mainTargetDiv } from "../nav/main-content-nav.js";
+import { initKeyboardNav } from "../nav/keyboard-nav.js";
 export const navBarLessonTitle = document.querySelector('#navBarLessonTitle');
 export const tutorialLink = document.querySelector('#tutorialLink')
 export const homepage = document.querySelector('#homePageLink')
@@ -35,6 +36,7 @@ function initMain(e) {
     initTutorialLink()
     window._mainScriptInitialized = true;
     // Initialize UI elements
+    initKeyboardNav()
     initDropDowns({ e });
     initToggleSidebar({ e });
     // Detect and handle initial focus zone
@@ -82,14 +84,30 @@ function setupGlobalKeyListener() {
         if (!e || !e.key) return;
         const key = e.key.toLowerCase();
         let focusZone = getFocusZone({ e });
-        if (e.key.toLowerCase() === 't') {
+        if (key === 't') {
             tutorialLink.focus()
+            return
+        }
+
+        // These are fixed navigation controls, not free-form letter matches.
+        // Focusing them directly avoids content titles such as
+        // "python w/ ollama" intercepting the Previous shortcut.
+        if (key === 'e') {
+            nxtBtn?.focus()
+            return
+        }
+        if (key === 'p') {
+            prevBtn?.focus()
+            return
+        }
+        if (key === 'n') {
+            navBarLessonTitle?.focus()
             return
         }
         
         
         // /////////////////       I DID IT !!!!!!!!!         /////////////////
-        const allowedKeys = ['b','c','d','e','h','p','n']
+        const allowedKeys = ['b','c','d','h']
         if(allowedKeys.includes(key)) {
             focusZone = 'header'
         }
@@ -132,44 +150,40 @@ function setupGlobalKeyListener() {
             }
         }
     });
-    nxtBtn.addEventListener('click', (e) => {
+    nxtBtn?.addEventListener('click', e => {
         e.preventDefault();
-
-        const allLinks = [...updateAllSideBarLinks()];
-
-        const currentIndex = allLinks.indexOf(lastClickedSideBarLink);
-
-        const startIndex = currentIndex === -1 ? 0 : currentIndex;
-
-        const nextLink = allLinks[startIndex + 1];
-
-        if (!nextLink) return;
-
-        // THIS is the important fix:
-        nextLink.focus();
-
-        nextLink.click();
+        navigateLesson(1);
     });
-    prevBtn.addEventListener('click', (e) => {
+
+    prevBtn?.addEventListener('click', e => {
         e.preventDefault();
-
-        const allLinks = [...updateAllSideBarLinks()];
-
-        const currentIndex = allLinks.indexOf(lastClickedSideBarLink);
-
-        const startIndex = currentIndex === -1 ? 0 : currentIndex;
-
-        const nextLink = allLinks[startIndex + 1];
-
-        if (!nextLink) return;
-
-        // THIS is the important fix:
-        nextLink.focus();
-
-        nextLink.click();
+        navigateLesson(-1);
     });
     
         
+}
+
+function navigateLesson(direction) {
+    const allLinks = [...updateAllSideBarLinks()];
+    if (!allLinks.length) return;
+
+    const currentIndex = allLinks.indexOf(lastClickedSideBarLink);
+    let targetIndex;
+
+    if (currentIndex === -1) {
+        targetIndex = direction === 1 ? 0 : allLinks.length - 1;
+    } else {
+        targetIndex = currentIndex + direction;
+
+        if (targetIndex >= allLinks.length) targetIndex = 0;
+        if (targetIndex < 0) targetIndex = allLinks.length - 1;
+    }
+
+    const targetLink = allLinks[targetIndex];
+    if (!targetLink) return;
+
+    mainContainer.classList.remove('collapsed');
+    targetLink.click();
 }
 
 function setHighlight(el) {

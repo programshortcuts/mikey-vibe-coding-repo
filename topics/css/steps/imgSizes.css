@@ -56,19 +56,3 @@
     object-fit: contain;
     max-height: 50vh;
 }
-
-/* VIDEO CONTROLS */
-.step-vid.enlarge .vid-cntrl-btns {
-    position: absolute;
-    bottom: 5%;
-    width: 100%;
-
-    display: flex;
-    justify-content: space-around;
-}
-
-/* hidden until enlarge */
-.vid-cntrl-btns {
-    display: none;
-}
-

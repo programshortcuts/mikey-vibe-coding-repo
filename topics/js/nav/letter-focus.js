@@ -14,15 +14,21 @@ export function letterFocus({ e, focusZone }) {
     const key = e.key.toLowerCase();
     if (key.length !== 1 || !/^[a-z0-9]$/.test(key)) return;
     // Find visible, valid elements
-    const allEls = [...document.querySelectorAll('a, [id]')].filter(el => {
+    const allEls = [...document.querySelectorAll('a, [id], [data-nav-target]')].filter(el => {
         const rect = el.getBoundingClientRect();
         return el.offsetParent !== null && rect.width > 0 && rect.height > 0;
     });
     // Filter elements by ID starting with pressed key
     const matching = allEls.filter(el => {
+        const navTarget = el.dataset.navTarget?.toLowerCase() || '';
         const id = el.id?.toLowerCase?.() || '';
+        const textTarget = el.matches('a')
+            ? el.textContent.trim().toLowerCase()
+            : '';
+        const target = navTarget || id || textTarget;
+
         return (
-            id.startsWith(key) &&
+            target.startsWith(key) &&
             id !== 'targetdiv' &&
             id !== 'targetheaderh3'
         );

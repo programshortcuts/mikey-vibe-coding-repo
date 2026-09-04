@@ -2,33 +2,38 @@
 import { lastStep,lastFocusedMainEl } from "./step-nav.js";
 import { mainTargetDiv } from "./main-content-nav.js";
 export function handleMKey({e,focusZone}) {
+    if (!e) return;
+
     e.preventDefault();
     e.stopPropagation();
-    let key = e.key.toLowerCase()
-    // 1. If there is a lastStep → ALWAYS go there
-    // console.log(lastFocusedMainEl)
-    // console.log('handle m key')
-    if(focusZone != 'mainTargetDiv'){
-        if(lastStep){
-            lastStep.focus()
-        } else if(document.contains(mainTargetDiv)){
-            mainTargetDiv.focus()
-        }
+
+    // M from any focusable descendant returns to its own step.
+    const currentStep = e.target.closest?.('.step-float');
+
+    if (currentStep && e.target !== currentStep) {
+        currentStep.focus();
+        return;
     }
-    // 2. Otherwise ALWAYS go to mainTargetDiv
-    if (focusZone === 'mainTargetDiv'){
-        if (e.target === lastStep){
-            mainTargetDiv.focus()
-            mainTargetDiv.scrollIntoView({behavior:'instant',block:'start'});
-            return
-        } else
-        if(e.target === mainTargetDiv){
-            if(lastStep){
-                lastStep.focus()
-                return
-            } 
+
+    // M from a step returns to the main lesson container.
+    if (currentStep && e.target === currentStep) {
+        mainTargetDiv?.focus();
+        mainTargetDiv?.scrollIntoView({behavior:'instant',block:'start'});
+        return;
+    }
+
+    // M from the lesson container returns to the last focused step.
+    if (e.target === mainTargetDiv) {
+        lastStep?.focus();
+        return;
+    }
+
+    // Preserve Mikey's existing outside-main fallback.
+    if (focusZone !== 'mainTargetDiv') {
+        if (lastStep) {
+            lastStep.focus();
+        } else if (mainTargetDiv && document.contains(mainTargetDiv)) {
+            mainTargetDiv.focus();
         }
-        // console.log(focusZone)
-        
     }
 }

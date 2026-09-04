@@ -17,6 +17,31 @@
     }
 }
 
+@media screen and (max-width: 960px) {
+    .vid-cntrl-btns {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        margin-top: 4px;
+    }
+
+    .vid-cntrl-btns button {
+        min-width: 34px;
+        min-height: 28px;
+        padding: 3px 8px;
+        font-size: 0.8rem;
+        line-height: 1;
+        border-radius: 5px;
+        border-width: 1px;
+        cursor: pointer;
+    }
+
+    .vid-cntrl-btns .playbtn {
+        min-width: 38px;
+    }
+}
+
 @media screen and (min-width: 750px) {
     .step-float > .step-vid,
     .step-float > .step-img{

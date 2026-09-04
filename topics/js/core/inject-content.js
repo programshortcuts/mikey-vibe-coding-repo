@@ -15,7 +15,7 @@ export const prevBtn = document.querySelector('#prevBtn')
 // Temporary fix, i'm quering step-floats again which i shouldn't
 export const lessonBtnsContainer = document.querySelector('.lesson-btns-container')
 export function injectContent(href) {
-    fetch(href)
+    return fetch(href)
         .then(response => {
             if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
             return response.text();
@@ -57,14 +57,15 @@ export function injectContent(href) {
             scrollTo(0, 0);
 
             // IMPORTANT: rebind everything AFTER DOM is stable
-            requestAnimationFrame(() => {
-                initStepNavigation({ mainTargetDiv });
-                removeLastStep();
-                addCopyCode();
-                updateImgs();
+            return new Promise(resolve => {
+                requestAnimationFrame(() => {
+                    initStepNavigation({ mainTargetDiv });
+                    removeLastStep();
+                    addCopyCode();
+                    updateImgs(mainTargetDiv);
+                    resolve();
+                });
             });
-
-            
 
         })
         .catch(err => {
